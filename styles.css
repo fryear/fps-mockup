@@ -317,3 +317,94 @@ p { color: var(--muted); margin-bottom: 20px; }
   .region-tag { margin-bottom: 40px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+
+/* Scorecard result */
+.score-main { min-width: 0; }
+#setup h2 { font-size: 22px; max-width: 36rem; }
+#setup .small { margin-bottom: 8px; }
+.setup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; }
+.setup-grid .field, .value-card .field, .result-toolbar .field { margin-bottom: 0; }
+.question-card select, .question-card input, .value-card input, .result-toolbar select { color: var(--ink); background: white; }
+.result-head { margin: 28px 0 16px; }
+.result-head h2 { font-size: clamp(1.6rem, 2.4vw, 2.1rem); margin-bottom: 0; }
+.result-toolbar { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; margin-bottom: 8px; }
+.result-toolbar .field { min-width: min(100%, 240px); flex: 1; }
+.goal-note { font-size: 13px; color: var(--ink-2); margin: 8px 0 18px; }
+.lease-line { border-left: 3px solid var(--amber); background: #f7f0e3; color: #6b5b3e; padding: 14px 16px; font-weight: 700; margin: 0 0 14px; }
+.band-line { font-family: 'Manrope', sans-serif; font-weight: 700; color: var(--ink); margin-bottom: 12px; }
+.area-row { display: grid; grid-template-columns: minmax(140px, 210px) 1fr 42px; gap: 12px; align-items: center; margin: 9px 0; }
+.area-row span { font-size: 13px; color: var(--ink); }
+.area-track { height: 8px; background: var(--line); border-radius: 99px; overflow: hidden; }
+.area-track span { display: block; height: 100%; width: 0; background: var(--teal); border-radius: 99px; }
+.area-track span.is-low { background: var(--amber); }
+.area-row strong { font-family: 'Manrope', sans-serif; font-size: 14px; text-align: right; }
+.action-list { display: grid; gap: 12px; margin: 18px 0; }
+.also-list { margin: 0 0 16px; padding-left: 18px; color: var(--ink-2); font-size: 13px; }
+.also-list li { margin: 4px 0; }
+.action-card { background: white; border: 1px solid var(--line); border-radius: 13px; padding: 20px 22px; }
+.action-card h3 { font-size: 16px; margin-bottom: 8px; }
+.action-card p { font-size: 13px; margin-bottom: 12px; }
+.action-card dl { display: grid; gap: 8px; margin: 0; }
+.action-card dl div { display: grid; grid-template-columns: 130px 1fr; gap: 8px; }
+.action-card dt { font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--teal); }
+.action-card dd { margin: 0; font-size: 13px; color: var(--ink-2); }
+.window-card, .value-card, .snapshot-card, .compare-card { background: white; border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; margin-top: 16px; }
+.window-card h3, .value-card h3, .snapshot-card h2, .compare-card h2 { font-size: 1.35rem; }
+.window-card p, .value-card p { margin-bottom: 0; }
+.value-card .field { margin: 12px 0; max-width: 360px; }
+.value-figures { font-family: 'Manrope', sans-serif; font-size: 28px; letter-spacing: -.04em; color: var(--ink); margin: 8px 0 !important; }
+.value-card .tiny { margin-top: 10px !important; }
+.snapshot-card h2 { font-size: clamp(1.5rem, 2vw, 2rem); }
+.source-list { list-style: none; margin: 0 0 8px; padding: 0; counter-reset: source; }
+.source-list li { counter-increment: source; border-top: 1px solid var(--line); padding: 12px 0 12px 34px; position: relative; color: var(--ink); font-size: 14px; }
+.source-list li::before { content: counter(source); position: absolute; left: 0; top: 12px; width: 22px; height: 22px; border-radius: 50%; background: var(--teal-light); color: var(--teal); font-size: 11px; font-weight: 700; display: grid; place-items: center; }
+.source-list li strong { font-family: 'Manrope', sans-serif; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 18px; }
+.compare-grid h3 { font-size: 18px; }
+.compare-grid ul, .flow-step ul { list-style: none; margin: 0; padding: 0; }
+.compare-grid li { font-size: 13px; color: var(--muted); padding: 5px 0 5px 18px; position: relative; }
+.compare-grid li::before { content: '✓'; position: absolute; left: 0; color: var(--teal); }
+.compare-actions { margin-top: 4px; }
+.compare-actions .button { max-width: 100%; white-space: normal; text-align: center; }
+.flow-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 34px; }
+.flow-step { background: white; border: 1px solid var(--line); border-radius: 12px; padding: 16px; min-width: 0; }
+.flow-step span { display: block; font-family: 'Manrope', sans-serif; color: var(--teal); font-size: 12px; letter-spacing: .06em; margin-bottom: 8px; }
+.flow-step h3 { font-size: 16px; margin-bottom: 6px; }
+.flow-step p { font-size: 13px; margin: 0; }
+.plain-sources { margin-top: 8px; }
+@media (max-width: 980px) {
+  .flow-steps { grid-template-columns: 1fr 1fr; }
+  .area-row { grid-template-columns: minmax(120px, 1fr) 1fr 36px; }
+}
+@media (max-width: 800px) {
+  .compare-grid, .setup-grid { grid-template-columns: 1fr; }
+  .flow-steps { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .area-row { grid-template-columns: 1fr auto; }
+  .area-track { grid-column: 1 / -1; }
+  .action-card dl div { grid-template-columns: 1fr; gap: 2px; }
+  .result-toolbar .button { width: 100%; }
+  .value-figures { font-size: 22px; }
+}
+@media print {
+  body.scorecard-page .site-header,
+  body.scorecard-page .page-hero,
+  body.scorecard-page #scorecard,
+  body.scorecard-page .site-footer,
+  body.scorecard-page .no-print { display: none !important; }
+  body.scorecard-page .section { padding: 12px 0; }
+  body.scorecard-page .score-layout { display: block; }
+  body.scorecard-page .score-panel { position: static; background: white; color: var(--ink); border: 1px solid #ccc; }
+  body.scorecard-page .score-panel p,
+  body.scorecard-page .progress-text,
+  body.scorecard-page .privacy-note,
+  body.scorecard-page .score-value span { color: #333; }
+  body.scorecard-page .score-ring { background: none; width: auto; height: auto; margin: 8px 0; }
+  body.scorecard-page .score-ring::after { display: none; }
+  body.scorecard-page .action-card,
+  body.scorecard-page .window-card,
+  body.scorecard-page .value-card,
+  body.scorecard-page .snapshot-card,
+  body.scorecard-page .compare-card { break-inside: avoid; }
+}
