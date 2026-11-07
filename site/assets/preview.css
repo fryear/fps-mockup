@@ -73,3 +73,5 @@ main.fps-page.fps-score { display: block; }
 @media (min-width: 1025px) {
   .site-navigation-dropdown.fps-relocated { display: none !important; }
 }
+
+/* Pages preview styles. */
