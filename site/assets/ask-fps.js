@@ -54,8 +54,9 @@
     var titles = el('div');
     titles.append(el('strong', null, knowledge.title || 'Ask FPS'));
     titles.append(el('span', 'ask-fps-badge', knowledge.badge || 'Demo, preview only'));
-    var close = el('button', 'ask-fps-close', 'Close');
+    var close = el('button', 'ask-fps-close', '\u00d7');
     close.type = 'button';
+    close.setAttribute('aria-label', 'Close');
     head.append(titles, close);
 
     var log = el('div', 'ask-fps-log');
@@ -108,14 +109,37 @@
       input.value = '';
     }
 
-    function setOpen(open) {
-      panel.hidden = !open;
-      launcher.setAttribute('aria-expanded', String(open));
-      if (open) input.focus();
+    function isOpen() {
+      return root.classList.contains('is-open');
     }
 
-    launcher.addEventListener('click', function () { setOpen(panel.hidden); });
-    close.addEventListener('click', function () { setOpen(false); });
+    function setOpen(open) {
+      root.classList.toggle('is-open', open);
+      panel.hidden = !open;
+      launcher.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) {
+        input.focus();
+      } else {
+        launcher.focus();
+      }
+    }
+
+    launcher.addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      setOpen(!isOpen());
+    });
+    close.addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      setOpen(false);
+    });
+    document.addEventListener('keydown', function (event) {
+      if ((event.key === 'Escape' || event.key === 'Esc') && isOpen()) {
+        event.preventDefault();
+        setOpen(false);
+      }
+    });
     form.addEventListener('submit', function (event) {
       event.preventDefault();
       event.stopPropagation();
