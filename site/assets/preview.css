@@ -75,3 +75,22 @@ main.fps-page.fps-score { display: block; }
 }
 
 /* Pages preview styles. */
+.ask-fps { position: fixed; right: 16px; bottom: 16px; z-index: 100000; font-family: "Source Sans 3", Satoshi, sans-serif; }
+.ask-fps-launcher, .ask-fps-send, .ask-fps-close { font: inherit; cursor: pointer; }
+.ask-fps-launcher { background: #141B38; color: #fff; border: 0; border-radius: 999px; padding: 12px 16px; font-weight: 700; box-shadow: 0 8px 24px rgba(20,27,56,.25); }
+.ask-fps-panel { width: min(360px, calc(100vw - 32px)); background: #fff; color: #3D3D3D; border: 1px solid #dce4ec; border-radius: 14px; box-shadow: 0 16px 40px rgba(20,27,56,.2); margin-bottom: 10px; display: flex; flex-direction: column; max-height: min(520px, calc(100vh - 96px)); }
+.ask-fps-head { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; padding: 12px 12px 8px; }
+.ask-fps-head strong { display: block; color: #141B38; }
+.ask-fps-badge { display: inline-block; margin-top: 4px; background: #f7f0e3; color: #6b5b3e; font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 2px 6px; border-radius: 3px; }
+.ask-fps-close { background: transparent; border: 0; color: #141B38; }
+.ask-fps-log { overflow: auto; padding: 0 12px 8px; display: flex; flex-direction: column; gap: 8px; }
+.ask-fps-msg { margin: 0; font-size: 14px; }
+.ask-fps-msg.is-user { align-self: flex-end; background: #EAF3FA; border-radius: 10px; padding: 8px 10px; }
+.ask-fps-msg.is-bot { align-self: stretch; }
+.ask-fps-links { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; }
+.ask-fps-links a { color: #3A8EC5; font-weight: 700; font-size: 13px; }
+.ask-fps-form { display: flex; gap: 8px; padding: 8px 12px 0; }
+.ask-fps-form input { flex: 1; border: 1px solid #dce4ec; border-radius: 6px; padding: 8px; font: inherit; }
+.ask-fps-send { background: #3A8EC5; color: #fff; border: 0; border-radius: 6px; padding: 8px 12px; font-weight: 700; }
+.ask-fps-note { margin: 0; padding: 8px 12px 12px; font-size: 11px; color: #637579; }
+@media print { .ask-fps { display: none !important; } }

@@ -11,3 +11,9 @@ document.querySelectorAll('.site-navigation-toggle').forEach(function (btn) {
 document.querySelectorAll('form').forEach(function (form) {
   form.addEventListener('submit', function (event) { event.preventDefault(); });
 });
+(function () {
+  if (!document.currentScript) return;
+  var widget = document.createElement('script');
+  widget.src = new URL('ask-fps.js', document.currentScript.src).href;
+  document.body.appendChild(widget);
+})();

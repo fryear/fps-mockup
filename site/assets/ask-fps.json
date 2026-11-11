@@ -1,0 +1,95 @@
+{
+  "title": "Ask FPS",
+  "badge": "Demo, preview only",
+  "intro": "Answers come from pages already on this preview. Your question stays in this browser. Nothing is sent or stored.",
+  "agentNote": "A later version could run as a ChatGPT Business Agent once brokerages qualify. OpenAI’s Businesses in ChatGPT beta lets eligible US businesses claim a profile, keep details current, and see aggregated insights. This demo does not connect to ChatGPT.",
+  "fallback": {
+    "text": "I can only answer from this preview. For a private readiness check, use the free scorecard. To see practices, open listings. To talk with a person, contact Karl.",
+    "links": ["scorecard", "listings", "contact"]
+  },
+  "entries": [
+    {
+      "id": "scorecard",
+      "keywords": ["scorecard", "readiness", "how ready", "self-check", "free score", "buyer ready"],
+      "text": "The free scorecard is a private self-check. It scores financial evidence, revenue, the lease, the team, systems, and AI visibility. You get a band, ranked actions, and a planning window. No email is required, and nothing is stored.",
+      "links": ["scorecard"]
+    },
+    {
+      "id": "valuation",
+      "keywords": ["worth", "valuation", "value", "multiple", "collections", "60%", "85%", "what is my practice"],
+      "text": "For many single-location Arizona general practices, the published guide uses about 60% to 85% of annual collections as orientation only. It is not a valuation. Profit, hygiene, the lease, equipment, and how patients stay without the owner move the number. Karl still does a confidential review before any asking price.",
+      "links": ["valuation", "scorecard", "contact"]
+    },
+    {
+      "id": "sell",
+      "keywords": ["sell", "selling", "seller", "exit", "list my practice", "transition"],
+      "text": "Selling starts with a confidential conversation about timing and goals, then a valuation, a prospectus, buyer matching, and a coordinated close. Staff and patients are part of the plan. You can start with the free scorecard if you want a private picture first.",
+      "links": ["sellers", "scorecard", "contact"]
+    },
+    {
+      "id": "buy",
+      "keywords": ["buy", "buying", "buyer", "acquire", "acquisition", "sba", "financing"],
+      "text": "Buyers can review current listings and ask about financing, diligence, and fit. Full listing details are shared after an NDA. Karl can also walk through what lenders tend to look at.",
+      "links": ["listings", "buyers", "contact"]
+    },
+    {
+      "id": "listings",
+      "keywords": ["listing", "listings", "for sale", "inventory", "nda", "opportunities", "practices for sale"],
+      "text": "Listings on this preview are confidential. The page shows the city and a short description, not the exact address. Ask Karl for the NDA if you want the full file.",
+      "links": ["listings", "contact"]
+    },
+    {
+      "id": "lease",
+      "keywords": ["lease", "landlord", "assignable", "rent", "real estate"],
+      "text": "A weak or unclear lease can block a sale even when the numbers look fine. Counsel should review assignment, options, and landlord consent. If that is your weakest scorecard answer, the result says the practice is not ready to market.",
+      "links": ["scorecard", "contact"]
+    },
+    {
+      "id": "advisory",
+      "keywords": ["advisory", "assessment", "retainer", "price", "cost", "2500", "5000", "paid", "offer"],
+      "text": "The free scorecard stands on its own. A Readiness Assessment is proposed at $2,500–$5,000. The AI and online presence cleanup is a separate proposed add-on at $1,500–$3,000. Those figures are proposals for this preview, not a quote.",
+      "links": ["advisory", "scorecard"]
+    },
+    {
+      "id": "ai",
+      "keywords": ["chatgpt", "business hub", "google business", "yelp", "healthgrades", "ai visibility", "reviews", "online presence", "assistant"],
+      "text": "Patients and buyers now find practices through AI assistants as well as search. The scorecard asks whether the Google Business Profile and the ChatGPT Business Hub profile are claimed, and whether hours, services, insurance, and recent reviews are in good shape. The proposed cleanup add-on covers Google, ChatGPT Business Hub, Yelp, and Healthgrades.",
+      "links": ["scorecard", "advisory"]
+    },
+    {
+      "id": "contact",
+      "keywords": ["karl", "contact", "phone", "call", "email", "talk", "appointment", "480"],
+      "text": "Karl Frye is the founder and principal broker. Call 480-599-6958 or email karl@fryepracticesales.com. The contact form on this preview does not send anything.",
+      "links": ["contact"]
+    },
+    {
+      "id": "confidential",
+      "keywords": ["confidential", "staff", "secret", "quiet", "privacy", "patients find out"],
+      "text": "Owners often wait because they do not want the staff or the town to hear about a sale too soon. The process is built to stay confidential until you choose otherwise. Talk with Karl about how that works for your office.",
+      "links": ["faq", "contact"]
+    },
+    {
+      "id": "team",
+      "keywords": ["team", "associate", "hygiene", "owner dependent", "staffing"],
+      "text": "Buyers look at whether care and collections continue if the owner steps back. Measuring owner, associate, and hygiene production, and writing a coverage plan, is one of the longer scorecard actions.",
+      "links": ["scorecard", "sellers"]
+    },
+    {
+      "id": "california",
+      "keywords": ["california", "southern california", "san diego", "orange county"],
+      "text": "Frye Practice Sales is rooted in Arizona and says Southern California is coming soon. The California page on this preview is the public note, not a live local office.",
+      "links": ["california", "contact"]
+    }
+  ],
+  "links": {
+    "scorecard": { "label": "Free scorecard", "path": "scorecard/" },
+    "listings": { "label": "Current listings", "path": "listings/" },
+    "contact": { "label": "Talk to Karl", "path": "contact/" },
+    "advisory": { "label": "Sell-Ready Advisory", "path": "sell-ready-advisory/" },
+    "valuation": { "label": "Valuation guide", "path": "dental-practice-valuation-arizona/" },
+    "sellers": { "label": "Selling a practice", "path": "sellers/" },
+    "buyers": { "label": "Buying a practice", "path": "buyers/" },
+    "faq": { "label": "FAQ", "path": "faq/" },
+    "california": { "label": "Southern California", "path": "california-dental-broker/" }
+  }
+}
