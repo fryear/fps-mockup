@@ -61,9 +61,11 @@ function focusContactForm() {
   var topic = new URLSearchParams(location.search).get('topic');
   var hidden = form.querySelector('input[name="topic"]');
   if (hidden && topic) hidden.value = topic;
-  var first = form.querySelector('input:not([type="hidden"]), select, textarea');
+  form.scrollIntoView({ block: 'start' });
+  var first = form.querySelector('input[name="name"], input[name="email"], select:not([name="company"]), textarea');
   if (!first) return;
   window.setTimeout(function () { first.focus({ preventScroll: true }); }, 60);
 }
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', focusContactForm);
 else focusContactForm();
+window.addEventListener('load', focusContactForm);

@@ -1103,12 +1103,26 @@ body.admin-bar header.site-header {
               </div>
             </div>
             <div class="actions compare-actions">
-              <a class="button" href="../contact/?topic=Advisory#contact-form">Save my results by email (optional)</a>
+              <a class="button" href="#results-email">Save my results by email (optional)</a>
               <a class="button button-outline" href="../contact/?topic=Advisory#contact-form">Talk to an advisor</a>
             </div>
+            <form id="results-email" data-fps-sheet="scorecard" data-thanks="results-email-thanks" action="#" method="post" hidden>
+              <h3>Email me my results</h3>
+              <p>Optional. The score stays in this browser unless you send it.</p>
+              <p class="fps-hp" aria-hidden="true"><label>Company website<br><input name="company" tabindex="-1" autocomplete="off"></label></p>
+              <p><label for="results-name">Name<br><input id="results-name" name="name" autocomplete="name" placeholder="Your name"></label></p>
+              <p><label for="results-email-input">Email<br><input id="results-email-input" name="email" type="email" autocomplete="email" placeholder="you@example.com"></label></p>
+              <p><label for="results-phone">Phone<br><input id="results-phone" name="phone" type="tel" autocomplete="tel" placeholder="Optional"></label></p>
+              <p><label for="results-practice">Practice / City<br><input id="results-practice" name="practice" placeholder="Optional"></label></p>
+              <p><label for="results-state">State<br><select id="results-state" name="state"><option value="">Choose one</option><option>AZ</option><option>CA</option><option>Other</option></select></label></p>
+              <p><label for="results-years">Years to sale<br><select id="results-years" name="years"><option value="">Choose one</option><option value="&lt;1">&lt;1</option><option>1-2</option><option>2-3</option><option>3-5</option><option>5+</option></select></label></p>
+              <p><button class="button" type="submit">Email me my results</button></p>
+              <p class="fps-privacy">Your details go only to Frye Practice Sales. We don't sell or share them.</p>
+            </form>
+            <p id="results-email-thanks" class="fps-thanks" hidden>Thanks. We have your results note.</p>
             <p class="form-note">Between the free score and a full review, the <a href="../sell-ready-advisory/#practice-value-check">Practice Value Check</a> is a proposed $1,500–$3,500 entry offer. It covers a short look at financials, staff cost versus local pay, the tech stack, and the top five value fixes. The work aims to improve what a buyer will ask to see. It does not promise a higher price.</p>
             <p class="fps-compliance">Advisory services are provided by Andrew Frye under a separate agreement and fixed fee. They are not real estate or brokerage services. Andrew Frye does not find buyers, set listing prices or negotiate sales. There is no fee sharing between advisory and brokerage. You are free to choose any broker.</p>
-            <p class="form-note">These links open the contact form. This page does not email, store, or send your answers.</p>
+            <p class="form-note">Talk to an advisor opens the contact form. Email me my results stays on this page. Nothing is sent until you submit a form.</p>
           </article>
         </div>
       </div>
@@ -1121,7 +1135,7 @@ body.admin-bar header.site-header {
           <strong id="result-title">Start with your goal</strong>
           <p id="result-copy">Your score, actions, and planning window will appear as you answer. Nothing is stored or sent.</p>
           <a class="button button-light" id="result-link" href="#setup">Continue the questions</a>
-          <div class="privacy-note">⌁ Runs only in this browser. No data leaves this page.</div>
+          <div class="privacy-note">The score stays in this browser unless you email it.</div>
         </div>
       </aside></div><div class="disclosure"><strong>Important:</strong> This is a short educational self-check, not a valuation, quality-of-earnings review, or prediction of buyer interest. The scoring and recommendations are proposed for this mockup. A proper assessment requires financial and operational diligence. If a range appears, it is orientation only, based on FPS's published Arizona guide.</div</main><footer id="site-footer" class="site-footer dynamic-footer footer-has-copyright">
 	<div class="footer-inner">
@@ -1268,4 +1282,4 @@ body.admin-bar header.site-header {
 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1559"><a href="../faq/index.html">FAQ</a></li>
 <li class="menu-item fps-mock-nav"><a href="../sell-ready-advisory/">Sell-Ready Advisory</a></li><li class="menu-item fps-mock-nav"><a href="">Free Scorecard</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1560"><a href="../contact/index.html">Contact</a></li>
 <li class="fps-nav-cta menu-item menu-item-type-custom menu-item-object-custom menu-item-1578"><a href="../contact/index.html">Get a Valuation</a></li>
-</ul>			</nav><div class="sbr-lightbox-overlay" role="dialog" aria-modal="true" aria-label="Review photo viewer" tabindex="-1"><button class="sbr-lightbox-close" aria-label="Close">×</button><button class="sbr-lightbox-nav sbr-prev" aria-label="Previous">‹</button><div class="sbr-lightbox-content"><img class="sbr-lightbox-image" src="../index.html" alt="Reviewer photo"></div><button class="sbr-lightbox-nav sbr-next" aria-label="Next">›</button></div><div id="sbr_lightboxOverlay" class="sbr_lightboxOverlay" style="display: none;"></div><div id="sbr_lightbox" class="sbr_lightbox" role="dialog" aria-modal="true" aria-label="Review photo viewer" tabindex="-1" style="display: none;"><div class="sbr_lb-outerContainer"><div class="sbr_lb-container"><img class="sbr_lb-image" alt="" src="../index.html"><div class="sbr_lb-player sbr_lb-player-placeholder" id="sbr_lb-player"></div><div class="sbr_lb-nav"><button type="button" class="sbr_lb-prev" aria-label="Previous photo"><span class="sbr-screenreader">Previous photo</span><span></span></button><button type="button" class="sbr_lb-next" aria-label="Next photo"><span class="sbr-screenreader">Next photo</span><span></span></button></div><div class="sbr_lb-loader"><a class="sbr_lb-cancel"></a></div></div></div><div class="sbr_lb-dataContainer"><div class="sbr_lb-data"><div class="sbr_lb-details"><div class="sbr_lb-caption"></div><div class="sbr_lb-info"><div class="sbr_lb-number"></div></div></div><div class="sbr_lb-closeContainer"><button type="button" class="sbr_lb-close" aria-label="Close photo viewer"></button></div></div></div></div><script src="../assets/preview.js"></script><script src="../assets/scorecard.js"></script></body></html>
+</ul>			</nav><div class="sbr-lightbox-overlay" role="dialog" aria-modal="true" aria-label="Review photo viewer" tabindex="-1"><button class="sbr-lightbox-close" aria-label="Close">×</button><button class="sbr-lightbox-nav sbr-prev" aria-label="Previous">‹</button><div class="sbr-lightbox-content"><img class="sbr-lightbox-image" src="../index.html" alt="Reviewer photo"></div><button class="sbr-lightbox-nav sbr-next" aria-label="Next">›</button></div><div id="sbr_lightboxOverlay" class="sbr_lightboxOverlay" style="display: none;"></div><div id="sbr_lightbox" class="sbr_lightbox" role="dialog" aria-modal="true" aria-label="Review photo viewer" tabindex="-1" style="display: none;"><div class="sbr_lb-outerContainer"><div class="sbr_lb-container"><img class="sbr_lb-image" alt="" src="../index.html"><div class="sbr_lb-player sbr_lb-player-placeholder" id="sbr_lb-player"></div><div class="sbr_lb-nav"><button type="button" class="sbr_lb-prev" aria-label="Previous photo"><span class="sbr-screenreader">Previous photo</span><span></span></button><button type="button" class="sbr_lb-next" aria-label="Next photo"><span class="sbr-screenreader">Next photo</span><span></span></button></div><div class="sbr_lb-loader"><a class="sbr_lb-cancel"></a></div></div></div><div class="sbr_lb-dataContainer"><div class="sbr_lb-data"><div class="sbr_lb-details"><div class="sbr_lb-caption"></div><div class="sbr_lb-info"><div class="sbr_lb-number"></div></div></div><div class="sbr_lb-closeContainer"><button type="button" class="sbr_lb-close" aria-label="Close photo viewer"></button></div></div></div></div><script src="../assets/js/fps-config.js"></script><script src="../assets/preview.js"></script><script src="../assets/js/fps-sheet.js"></script><script src="../assets/scorecard.js"></script></body></html>

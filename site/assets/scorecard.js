@@ -283,6 +283,9 @@ if (scorecard) {
       link.href = '#results';
     }
 
+    const emailCard = document.querySelector('#results-email');
+    const emailThanks = document.querySelector('#results-email-thanks');
+    if (emailCard) emailCard.hidden = !result.complete || (emailThanks && !emailThanks.hidden);
     leaseLine.hidden = !result.leaseIsWeakest;
     if (techNote) {
       techNote.hidden = !result.techNeedsWork;
