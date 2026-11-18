@@ -959,7 +959,19 @@ body.admin-bar header.site-header {
     </style>
     <div class="fps-nda-page">
             <p>Pre-qualified buyers receive the full prospectus, financials and practice name after the NDA is signed. Submit the form and our team follows up, usually the same business day.</p>
-      
+      <form id="nda-form" data-fps-sheet="inquiry" data-thanks="nda-thanks" action="#" method="post">
+        <input type="hidden" name="topic" value="NDA">
+        <p class="fps-hp" aria-hidden="true"><label>Company website<br><input name="company" tabindex="-1" autocomplete="off"></label></p>
+        <p><label for="nda-name">Name<br><input id="nda-name" name="name" autocomplete="name" placeholder="Your name"></label></p>
+        <p><label for="nda-email">Email<br><input id="nda-email" name="email" type="email" autocomplete="email" placeholder="you@example.com"></label></p>
+        <p><label for="nda-phone">Phone<br><input id="nda-phone" name="phone" type="tel" autocomplete="tel" placeholder="Optional"></label></p>
+        <p><label for="nda-practice">Practice / City<br><input id="nda-practice" name="practice" placeholder="Optional"></label></p>
+        <p><label for="nda-state">State<br><select id="nda-state" name="state"><option value="">Choose one</option><option>AZ</option><option>CA</option><option>Other</option></select></label></p>
+        <p><label for="nda-message">Message<br><textarea id="nda-message" name="message" placeholder="Which listing, and what you need"></textarea></label></p>
+        <p><button class="fps-btn" type="submit">Request the NDA</button></p>
+        <p class="fps-privacy">Your details go only to Frye Practice Sales. We don't sell or share them.</p>
+      </form>
+      <p id="nda-thanks" class="fps-thanks" hidden>Thanks. We have your note.</p>
       <div class="fps-nda-note">Karl Frye and the FPS team review every inquiry. Confidential.</div>
     </div>
     
@@ -1089,5 +1101,5 @@ body.admin-bar header.site-header {
 	    
         
     
-<script src="../assets/preview.js"></script></body>
+<script src="../assets/js/fps-config.js"></script><script src="../assets/preview.js"></script><script src="../assets/js/fps-sheet.js"></script></body>
 </html>
