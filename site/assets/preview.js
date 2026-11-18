@@ -54,3 +54,16 @@ function settleAsk() {
 new MutationObserver(settleAsk).observe(document.body, { childList: true });
 window.addEventListener('scroll', settleAsk, { passive: true });
 settleAsk();
+function focusContactForm() {
+  if (location.hash !== '#contact-form') return;
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+  var topic = new URLSearchParams(location.search).get('topic');
+  var hidden = form.querySelector('input[name="topic"]');
+  if (hidden && topic) hidden.value = topic;
+  var first = form.querySelector('input:not([type="hidden"]), select, textarea');
+  if (!first) return;
+  window.setTimeout(function () { first.focus({ preventScroll: true }); }, 60);
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', focusContactForm);
+else focusContactForm();

@@ -48,31 +48,31 @@
       "id": "advisory",
       "keywords": ["advisory", "assessment", "retainer", "price", "cost", "2500", "5000", "paid", "offer", "kpi", "dashboard", "staffing", "diligence prep", "benchmark"],
       "text": "The free scorecard stands on its own. The Practice Value Check is the paid entry offer, proposed at $1,500–$3,500. Full Sell-Ready Advisory is the Readiness Assessment, proposed at $2,500–$5,000. Other proposed modules are a Technology and Data Audit with a dental IT partner, a monthly Owner KPI Dashboard for the 12–24 months before a sale, a Staffing and Pay Benchmark, and Pre-Sale Diligence Prep. The AI and online presence cleanup is a proposed add-on at $1,500–$3,000. These figures are proposals for this preview, not a quote. Advisory services are provided by Andrew Frye under a separate agreement and fixed fee. They are not real estate or brokerage services. Andrew Frye does not find buyers, set listing prices or negotiate sales. There is no fee sharing between advisory and brokerage. You are free to choose any broker.",
-      "links": ["advisory", "scorecard"]
+      "links": ["advisor", "advisory", "scorecard"]
     },
     {
       "id": "ai",
       "keywords": ["chatgpt", "business hub", "google business", "yelp", "healthgrades", "ai visibility", "reviews", "online presence", "assistant"],
       "text": "Patients and buyers now find practices through AI assistants as well as search. The scorecard asks whether the Google Business Profile and the ChatGPT Business Hub profile are claimed, and whether hours, services, insurance, and recent reviews are in good shape. The proposed cleanup add-on covers Google, ChatGPT Business Hub, Yelp, and Healthgrades.",
-      "links": ["scorecard", "advisory"]
+      "links": ["advisor", "scorecard", "advisory"]
     },
     {
       "id": "tech-data",
       "keywords": ["technology", "tech stack", "tech data", "data readiness", "dentrix", "eaglesoft", "open dental", "dentally", "computers", "operating system", "it provider", "software subscription", "hipaa", "cybersecurity", "backups"],
       "text": "Technology and data is the seventh scorecard area. It asks which software you use, such as Dentrix, Eaglesoft, Open Dental, or Dentally, and whether it is current or in the cloud. It also asks about computer age, software subscriptions, the monthly IT fee, and whether key numbers are in one place each month. An optional question covers a HIPAA risk assessment, backups, and cybersecurity in the last 12 months. A low score matters. DSO buyers move every practice onto their own systems. Old computers, scattered software, and unclear data become a price cut in diligence. The Technology and Data Audit is delivered with a dental IT partner.",
-      "links": ["scorecard", "advisory"]
+      "links": ["advisor", "scorecard", "advisory"]
     },
     {
       "id": "value-check",
       "keywords": ["practice value check", "value check", "1500", "3500", "entry offer"],
       "text": "The Practice Value Check is the paid entry offer between the free scorecard and full Sell-Ready Advisory. The proposed price is $1,500–$3,500. It covers a short review of financials, staff cost versus local pay, the tech stack, and the top five value fixes. That price is a proposal for this preview, not a quote. It is a separate fixed fee from brokerage. It is not credited against a brokerage fee, and it is not shared with brokerage. You are free to choose any broker. The work aims to improve the file a buyer will read. It does not promise a higher price.",
-      "links": ["advisory", "scorecard"]
+      "links": ["advisor", "advisory", "scorecard"]
     },
     {
       "id": "fees",
       "keywords": ["commission", "success fee", "fee sharing", "fee split", "separate fee", "advisory versus brokerage", "advisory vs brokerage", "choose any broker", "credited", "referral fee"],
       "text": "Advisory services are provided by Andrew Frye under a separate agreement and fixed fee. They are not real estate or brokerage services. Andrew Frye does not find buyers, set listing prices or negotiate sales. There is no fee sharing between advisory and brokerage. You are free to choose any broker. Brokerage is a different agreement, provided by Frye Practice Sales under Karl Frye's Arizona license. AZ license #[to confirm]. This preview does not state a commission, a success fee, or a fee tied to closing.",
-      "links": ["advisory", "contact"]
+      "links": ["advisor", "advisory", "contact"]
     },
     {
       "id": "contact",
@@ -102,7 +102,8 @@
   "links": {
     "scorecard": { "label": "Free scorecard", "path": "scorecard/" },
     "listings": { "label": "Current listings", "path": "listings/" },
-    "contact": { "label": "Talk to Karl", "path": "contact/" },
+    "contact": { "label": "Talk to Karl", "path": "contact/#contact-form" },
+    "advisor": { "label": "Talk to an advisor", "path": "contact/?topic=Advisory#contact-form" },
     "advisory": { "label": "Sell-Ready Advisory", "path": "sell-ready-advisory/" },
     "valuation": { "label": "Valuation guide", "path": "dental-practice-valuation-arizona/" },
     "sellers": { "label": "Selling a practice", "path": "sellers/" },
