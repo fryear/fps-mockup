@@ -18,6 +18,9 @@
 .fps-source { list-style:none; padding:0; margin:0 0 22px; }
 .fps-source li { border-top:1px solid #dce4ec; padding:10px 0; }
 .fps-offer { display:grid; grid-template-columns:72px 1fr 180px; gap:16px; margin:12px 0; align-items:center; }
+.fps-page .fps-offer { margin: 12px 0; }
+.fps-page .fps-offer h3 { margin: 0 0 6px; }
+.fps-page .fps-offer p { margin: 6px 0 0; }
 .fps-price { color:#8b7041; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
 .fps-offer strong { font-size:1.3rem; color:#141B38; }
 main.fps-page.fps-score { display: block; }
