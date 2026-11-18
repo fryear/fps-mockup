@@ -77,7 +77,11 @@
     form.append(input, send);
 
     var note = el('p', 'ask-fps-note', knowledge.agentNote);
-    panel.append(head, log, form, note);
+    var advisor = document.createElement('a');
+    advisor.className = 'ask-fps-advisor';
+    advisor.href = siteHref('contact/?topic=Advisory#contact-form');
+    advisor.textContent = 'Talk to an advisor';
+    panel.append(head, log, form, advisor, note);
     root.append(launcher, panel);
     document.body.append(root);
 
@@ -161,7 +165,8 @@
         links: {
           scorecard: { label: 'Free scorecard', path: 'scorecard/' },
           listings: { label: 'Current listings', path: 'listings/' },
-          contact: { label: 'Talk to Karl', path: 'contact/' }
+          contact: { label: 'Talk to Karl', path: 'contact/#contact-form' },
+          advisor: { label: 'Talk to an advisor', path: 'contact/?topic=Advisory#contact-form' }
         }
       });
     });
