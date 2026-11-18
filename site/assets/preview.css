@@ -1,5 +1,7 @@
 
 .fps-preview-banner { background:#141B38; color:#fff; text-align:center; padding:8px 16px; font:600 13px/1.45 "Source Sans 3", Satoshi, sans-serif; position:relative; z-index:100000; }
+.fps-compliance { font-size: 15px; line-height: 1.5; margin: 12px 0; }
+.fps-global-footer .fps-compliance { color: rgba(255,255,255,.8); font-size: 14px; }
 .fps-preview-note { margin:8px 0 12px; color:#6b5b3e; background:#f7f0e3; border-left:3px solid #d7a95c; padding:8px 12px; font-size:13px; }
 .fps-mock-band { background:#EAF3FA; padding:48px 20px; }
 .fps-mock-band-inner { max-width:980px; margin:0 auto; }

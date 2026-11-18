@@ -47,7 +47,7 @@
     {
       "id": "advisory",
       "keywords": ["advisory", "assessment", "retainer", "price", "cost", "2500", "5000", "paid", "offer", "kpi", "dashboard", "staffing", "diligence prep", "benchmark"],
-      "text": "The free scorecard stands on its own. The Practice Value Check is the paid entry offer, proposed at $1,500–$3,500. Full Sell-Ready Advisory is the Readiness Assessment, proposed at $2,500–$5,000. Other proposed modules are a Technology and Data Audit with a dental IT partner, a monthly Owner KPI Dashboard for the 12–24 months before a sale, a Staffing and Pay Benchmark, and Pre-Sale Diligence Prep. The AI and online presence cleanup is a proposed add-on at $1,500–$3,000. These figures are proposals for this preview, not a quote.",
+      "text": "The free scorecard stands on its own. The Practice Value Check is the paid entry offer, proposed at $1,500–$3,500. Full Sell-Ready Advisory is the Readiness Assessment, proposed at $2,500–$5,000. Other proposed modules are a Technology and Data Audit with a dental IT partner, a monthly Owner KPI Dashboard for the 12–24 months before a sale, a Staffing and Pay Benchmark, and Pre-Sale Diligence Prep. The AI and online presence cleanup is a proposed add-on at $1,500–$3,000. These figures are proposals for this preview, not a quote. Advisory services are provided by Andrew Frye under a separate agreement and fixed fee. They are not real estate or brokerage services. Andrew Frye does not find buyers, set listing prices or negotiate sales. There is no fee sharing between advisory and brokerage. You are free to choose any broker.",
       "links": ["advisory", "scorecard"]
     },
     {
@@ -65,13 +65,19 @@
     {
       "id": "value-check",
       "keywords": ["practice value check", "value check", "1500", "3500", "entry offer"],
-      "text": "The Practice Value Check is the paid entry offer between the free scorecard and full Sell-Ready Advisory. The proposed price is $1,500–$3,500. It covers a short review of financials, staff cost versus local pay, the tech stack, and the top five value fixes. That price is a proposal for this preview, not a quote.",
+      "text": "The Practice Value Check is the paid entry offer between the free scorecard and full Sell-Ready Advisory. The proposed price is $1,500–$3,500. It covers a short review of financials, staff cost versus local pay, the tech stack, and the top five value fixes. That price is a proposal for this preview, not a quote. It is a separate fixed fee from brokerage. It is not credited against a brokerage fee, and it is not shared with brokerage. You are free to choose any broker. The work aims to improve the file a buyer will read. It does not promise a higher price.",
       "links": ["advisory", "scorecard"]
+    },
+    {
+      "id": "fees",
+      "keywords": ["commission", "success fee", "fee sharing", "fee split", "separate fee", "advisory versus brokerage", "advisory vs brokerage", "choose any broker", "credited", "referral fee"],
+      "text": "Advisory services are provided by Andrew Frye under a separate agreement and fixed fee. They are not real estate or brokerage services. Andrew Frye does not find buyers, set listing prices or negotiate sales. There is no fee sharing between advisory and brokerage. You are free to choose any broker. Brokerage is a different agreement, provided by Frye Practice Sales under Karl Frye's Arizona license. AZ license #[to confirm]. This preview does not state a commission, a success fee, or a fee tied to closing.",
+      "links": ["advisory", "contact"]
     },
     {
       "id": "contact",
       "keywords": ["karl", "contact", "phone", "call", "email", "talk", "appointment", "480"],
-      "text": "Karl Frye is the founder and principal broker. Call 480-599-6958 or email karl@fryepracticesales.com. The contact form on this preview does not send anything.",
+      "text": "Karl Frye is the founder. Brokerage services are provided by Frye Practice Sales under his Arizona license. AZ license #[to confirm]. This preview does not claim a license in any other state. Call 480-599-6958 or email karl@fryepracticesales.com. The contact form on this preview does not send anything.",
       "links": ["contact"]
     },
     {
@@ -89,7 +95,7 @@
     {
       "id": "california",
       "keywords": ["california", "southern california", "san diego", "orange county"],
-      "text": "Frye Practice Sales is rooted in Arizona and says Southern California is coming soon. The California page on this preview is the public note, not a live local office.",
+      "text": "Malachi Frye, California real estate license expected December 2026. CA DRE License #[pending]. He does not list, negotiate, or broker California deals before that license is active. Brokerage on this preview is Arizona only, under Karl Frye. AZ license #[to confirm].",
       "links": ["california", "contact"]
     }
   ],
