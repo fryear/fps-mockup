@@ -987,6 +987,38 @@ body.admin-bar header.site-header {
             <div class="question-head"><span class="q-number">13</span><h2>Are hours, services, and insurance accurate across listings, with recent reviews at 4.5 or higher?</h2></div>
             <div class="options"><div class="option"><input type="radio" id="q13a" name="q13" value="2"><label for="q13a">Yes, listings match and reviews are strong</label></div><div class="option"><input type="radio" id="q13b" name="q13" value="1"><label for="q13b">Partly. Some listings or reviews lag</label></div><div class="option"><input type="radio" id="q13c" name="q13" value="0"><label for="q13c">No, or we have not checked</label></div></div>
           </fieldset>
+          <fieldset class="question-card" id="technology-data">
+            <div class="eyebrow">Seventh area</div>
+            <h2>Technology and data</h2>
+            <p class="small">DSO buyers move every practice onto their own systems. Old computers, scattered software, and unclear data can become a price cut in diligence.</p>
+            <div class="field">
+              <label for="practice-software">Which main practice software do you use?</label>
+              <select id="practice-software" name="practice-software">
+                <option value="">Choose one</option>
+                <option value="Dentrix">Dentrix</option>
+                <option value="Eaglesoft">Eaglesoft</option>
+                <option value="Open Dental">Open Dental</option>
+                <option value="Dentally">Dentally</option>
+                <option value="Other">Other</option>
+                <option value="Not sure">Not sure</option>
+              </select>
+            </div>
+            <div class="question-head"><span class="q-number">14</span><h2>Is that software current, or in the cloud?</h2></div>
+            <div class="options"><div class="option"><input type="radio" id="q14a" name="q14" value="2"><label for="q14a">Yes. It is current or in the cloud</label></div><div class="option"><input type="radio" id="q14b" name="q14" value="1"><label for="q14b">It runs, but it is old or only on our server</label></div><div class="option"><input type="radio" id="q14c" name="q14" value="0"><label for="q14c">We are not sure</label></div></div>
+            <div class="question-head"><span class="q-number">15</span><h2>How old are the office computers, and are they on a supported operating system?</h2></div>
+            <div class="options"><div class="option"><input type="radio" id="q15a" name="q15" value="2"><label for="q15a">Most are under five years and on a supported system</label></div><div class="option"><input type="radio" id="q15b" name="q15" value="1"><label for="q15b">Mixed ages, or we are not sure the system is still supported</label></div><div class="option"><input type="radio" id="q15c" name="q15" value="0"><label for="q15c">Many are old, or they run an unsupported system</label></div></div>
+            <div class="question-head"><span class="q-number">16</span><h2>How many separate software subscriptions do you pay for, and when did you last review them?</h2></div>
+            <p class="small">Include imaging, patient texting, payroll, reporting, and the rest.</p>
+            <div class="options"><div class="option"><input type="radio" id="q16a" name="q16" value="2"><label for="q16a">We have a list, and we reviewed it in the last year</label></div><div class="option"><input type="radio" id="q16b" name="q16" value="1"><label for="q16b">We pay for several, but the last review was over a year ago</label></div><div class="option"><input type="radio" id="q16c" name="q16" value="0"><label for="q16c">We do not have a list</label></div></div>
+            <div class="question-head"><span class="q-number">17</span><h2>What do you pay your outside IT provider each month, and do you know what they do for it?</h2></div>
+            <p class="small">Many offices pay about $500 to $2,000 a month.</p>
+            <div class="options"><div class="option"><input type="radio" id="q17a" name="q17" value="2"><label for="q17a">We know the monthly fee and what it covers</label></div><div class="option"><input type="radio" id="q17b" name="q17" value="1"><label for="q17b">We pay someone, but the work is unclear</label></div><div class="option"><input type="radio" id="q17c" name="q17" value="0"><label for="q17c">We do not have outside IT, or we do not know the cost</label></div></div>
+            <div class="question-head"><span class="q-number">18</span><h2>Do you see collections, new patients, hygiene, overhead, and staff cost at least monthly, in one place?</h2></div>
+            <div class="options"><div class="option"><input type="radio" id="q18a" name="q18" value="2"><label for="q18a">Yes. We review them together every month</label></div><div class="option"><input type="radio" id="q18b" name="q18" value="1"><label for="q18b">We see some of them, but not every month or not together</label></div><div class="option"><input type="radio" id="q18c" name="q18" value="0"><label for="q18c">No. We pull numbers only when we need them</label></div></div>
+            <div class="question-head"><span class="q-number">19</span><h2>In the last 12 months, have you done a HIPAA risk assessment, checked backups, and reviewed cybersecurity?</h2></div>
+            <p class="small">Optional. It counts if you answer it. The score does not wait on it.</p>
+            <div class="options"><div class="option"><input type="radio" id="q19a" name="q19" value="2"><label for="q19a">Yes. All three were done in the last 12 months</label></div><div class="option"><input type="radio" id="q19b" name="q19" value="1"><label for="q19b">Some of it, or we are not sure it is current</label></div><div class="option"><input type="radio" id="q19c" name="q19" value="0"><label for="q19c">No, or not in the last 12 months</label></div></div>
+          </fieldset>
         </form>
 
         <div id="results" aria-live="polite">
@@ -1011,7 +1043,8 @@ body.admin-bar header.site-header {
           </div>
           <p class="goal-note">Changing goals reorders actions; it does not hide risks.</p>
           <p id="lease-line" class="lease-line" hidden>Not ready to market: lease path unresolved</p>
-          <p id="band-line" class="band-line">Overall score appears after all 10 answers.</p>
+          <p id="tech-note" class="lease-line" hidden>DSO buyers move every practice onto their own systems. Old computers, scattered software, and unclear data become a price cut in diligence.</p>
+          <p id="band-line" class="band-line">Overall score appears after every required question is answered.</p>
           <div id="area-bars" class="area-list"></div>
           <div id="action-list" class="action-list"></div>
           <div id="also-open"></div>
@@ -1073,6 +1106,7 @@ body.admin-bar header.site-header {
               <a class="button" href="../sell-ready-advisory/index.html">Save my results by email (optional)</a>
               <a class="button button-outline" href="../sell-ready-advisory/index.html">Talk to an advisor</a>
             </div>
+            <p class="form-note">Between the free score and a full review, the <a href="../sell-ready-advisory/#practice-value-check">Practice Value Check</a> is a proposed $1,500–$3,500 entry offer. It covers a short look at financials, staff cost versus local pay, the tech stack, and the top five value fixes.</p>
             <p class="form-note">These links open the existing contact section. This page does not email, store, or send your answers.</p>
           </article>
         </div>
@@ -1081,7 +1115,7 @@ body.admin-bar header.site-header {
         <div class="eyebrow">Your private result</div>
         <h2>Buyer-readiness score</h2>
         <div class="score-ring" id="score-ring"><div class="score-value"><strong id="score-value">—</strong><span>OUT OF 100</span></div></div>
-        <div class="progress-text" id="progress-text">0 of 10 answered</div>
+        <div class="progress-text" id="progress-text">0 of 18 answered</div>
         <div class="score-result">
           <strong id="result-title">Start with your goal</strong>
           <p id="result-copy">Your score, actions, and planning window will appear as you answer. Nothing is stored or sent.</p>

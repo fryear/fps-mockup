@@ -11,7 +11,7 @@
     {
       "id": "scorecard",
       "keywords": ["scorecard", "readiness", "how ready", "self-check", "free score", "buyer ready"],
-      "text": "The free scorecard is a private self-check. It scores financial evidence, revenue, the lease, the team, systems, and AI visibility. You get a band, ranked actions, and a planning window. No email is required, and nothing is stored.",
+      "text": "The free scorecard is a private self-check. It scores financial evidence, revenue, the lease, the team, systems, AI visibility, and technology and data. You get a band, ranked actions, and a planning window. No email is required, and nothing is stored.",
       "links": ["scorecard"]
     },
     {
@@ -46,8 +46,8 @@
     },
     {
       "id": "advisory",
-      "keywords": ["advisory", "assessment", "retainer", "price", "cost", "2500", "5000", "paid", "offer"],
-      "text": "The free scorecard stands on its own. A Readiness Assessment is proposed at $2,500–$5,000. The AI and online presence cleanup is a separate proposed add-on at $1,500–$3,000. Those figures are proposals for this preview, not a quote.",
+      "keywords": ["advisory", "assessment", "retainer", "price", "cost", "2500", "5000", "paid", "offer", "kpi", "dashboard", "staffing", "diligence prep", "benchmark"],
+      "text": "The free scorecard stands on its own. The Practice Value Check is the paid entry offer, proposed at $1,500–$3,500. Full Sell-Ready Advisory is the Readiness Assessment, proposed at $2,500–$5,000. Other proposed modules are a Technology and Data Audit with a dental IT partner, a monthly Owner KPI Dashboard for the 12–24 months before a sale, a Staffing and Pay Benchmark, and Pre-Sale Diligence Prep. The AI and online presence cleanup is a proposed add-on at $1,500–$3,000. These figures are proposals for this preview, not a quote.",
       "links": ["advisory", "scorecard"]
     },
     {
@@ -55,6 +55,18 @@
       "keywords": ["chatgpt", "business hub", "google business", "yelp", "healthgrades", "ai visibility", "reviews", "online presence", "assistant"],
       "text": "Patients and buyers now find practices through AI assistants as well as search. The scorecard asks whether the Google Business Profile and the ChatGPT Business Hub profile are claimed, and whether hours, services, insurance, and recent reviews are in good shape. The proposed cleanup add-on covers Google, ChatGPT Business Hub, Yelp, and Healthgrades.",
       "links": ["scorecard", "advisory"]
+    },
+    {
+      "id": "tech-data",
+      "keywords": ["technology", "tech stack", "tech data", "data readiness", "dentrix", "eaglesoft", "open dental", "dentally", "computers", "operating system", "it provider", "software subscription", "hipaa", "cybersecurity", "backups"],
+      "text": "Technology and data is the seventh scorecard area. It asks which software you use, such as Dentrix, Eaglesoft, Open Dental, or Dentally, and whether it is current or in the cloud. It also asks about computer age, software subscriptions, the monthly IT fee, and whether key numbers are in one place each month. An optional question covers a HIPAA risk assessment, backups, and cybersecurity in the last 12 months. A low score matters. DSO buyers move every practice onto their own systems. Old computers, scattered software, and unclear data become a price cut in diligence. The Technology and Data Audit is delivered with a dental IT partner.",
+      "links": ["scorecard", "advisory"]
+    },
+    {
+      "id": "value-check",
+      "keywords": ["practice value check", "value check", "1500", "3500", "entry offer"],
+      "text": "The Practice Value Check is the paid entry offer between the free scorecard and full Sell-Ready Advisory. The proposed price is $1,500–$3,500. It covers a short review of financials, staff cost versus local pay, the tech stack, and the top five value fixes. That price is a proposal for this preview, not a quote.",
+      "links": ["advisory", "scorecard"]
     },
     {
       "id": "contact",

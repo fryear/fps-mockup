@@ -1,14 +1,17 @@
 // Local UI behavior only. No analytics, storage, network calls, or form submission.
-// Area score = average answer / 2 * 100.
-// Preview scorecard only. Overall weights: financial 27, revenue 18, lease 14, team 18, systems 13, AI visibility 10.
+// Area score = average answer / 2 * 100. Unanswered optional questions are left out of that average.
+// Preview scorecard only. Overall weights sum to 100:
+// financial 24, revenue 16, lease 12, team 16, systems 11, AI visibility 9, technology 12.
 // Goal weights only rank weak answers. They do not change the score.
+// q19 is optional. The overall score does not wait on it.
 
-const SCORE_WEIGHTS = { financial: 27, revenue: 18, lease: 14, team: 18, systems: 13, visibility: 10 };
+const SCORE_WEIGHTS = { financial: 24, revenue: 16, lease: 12, team: 16, systems: 11, visibility: 9, technology: 12 };
 const GOAL_WEIGHTS = {
-  'sell-now': { financial: 30, revenue: 15, lease: 20, team: 20, systems: 15, visibility: 10 },
-  'sell-later': { financial: 25, revenue: 25, lease: 10, team: 25, systems: 15, visibility: 18 },
-  dso: { financial: 30, revenue: 20, lease: 10, team: 25, systems: 15, visibility: 25 },
+  'sell-now': { financial: 30, revenue: 15, lease: 20, team: 20, systems: 15, visibility: 10, technology: 22 },
+  'sell-later': { financial: 25, revenue: 25, lease: 10, team: 25, systems: 15, visibility: 18, technology: 16 },
+  dso: { financial: 30, revenue: 20, lease: 10, team: 25, systems: 15, visibility: 25, technology: 30 },
 };
+const OPTIONAL_QUESTIONS = new Set(['q19']);
 const AREAS = [
   { id: 'financial', label: 'Financial evidence', questions: ['q1', 'q2', 'q3'] },
   { id: 'revenue', label: 'Revenue & payer durability', questions: ['q4'] },
@@ -16,6 +19,7 @@ const AREAS = [
   { id: 'team', label: 'Team & owner dependence', questions: ['q6', 'q7'] },
   { id: 'systems', label: 'Systems & transition', questions: ['q8', 'q9', 'q10'] },
   { id: 'visibility', label: 'AI & online visibility', questions: ['q11', 'q12', 'q13'] },
+  { id: 'technology', label: 'Technology & data', questions: ['q14', 'q15', 'q16', 'q17', 'q18', 'q19'] },
 ];
 const ACTION_DEFS = {
   q1: { area: 'financial', order: 1, title: 'Get three years of statements and tax returns, and reconcile collections.', who: 'CPA', doneWhen: 'Three years of statements and returns are in one place, and collections reconcile.', windowLabel: '30–60 days', estimate: 'about 1–2 months', days: 60 },
@@ -31,7 +35,14 @@ const ACTION_DEFS = {
   q11: { area: 'visibility', order: 11, title: 'Claim the Google Business Profile and make the hours, services, and phone number current.', who: 'Manager', doneWhen: 'The Google Business Profile is claimed, and hours, services, and the phone number match the practice.', windowLabel: '1–2 weeks', estimate: 'about 1–2 weeks', days: 14 },
   q12: { area: 'visibility', order: 12, title: 'Claim the ChatGPT Business Hub profile and keep the public details current.', who: 'Owner', doneWhen: 'The Business Hub profile is claimed, and the description, hours, and services are filled in.', windowLabel: '1–2 weeks', estimate: 'about 1–2 weeks', days: 14 },
   q13: { area: 'visibility', order: 13, title: 'Align hours, services, and insurance on Google, Yelp, and Healthgrades, and tend recent reviews.', who: 'Manager', doneWhen: 'Those listings match, and recent reviews are answered with the rating at 4.5 or higher.', windowLabel: '2–4 weeks', estimate: 'about 2–4 weeks', days: 28 },
+  q14: { area: 'technology', order: 14, title: 'Write down the practice software, the version, and whether it is current or in the cloud.', who: 'Owner + dental IT partner', doneWhen: 'The software name, version, and cloud or server setup are written down.', windowLabel: '1–2 weeks', estimate: 'about 1–2 weeks', days: 14 },
+  q15: { area: 'technology', order: 15, title: 'List each office computer and its operating system. Replace machines that are old or unsupported.', who: 'Owner + dental IT partner', doneWhen: 'Every computer has an age and a supported operating system, or a replacement date.', windowLabel: '30–90 days', estimate: 'about 1–3 months', days: 90 },
+  q16: { area: 'technology', order: 16, title: 'List every software subscription and the yearly cost, then review the list.', who: 'Manager', doneWhen: 'Imaging, texting, payroll, reporting, and the other subscriptions are on one list with a review date.', windowLabel: '2–4 weeks', estimate: 'about 2–4 weeks', days: 28 },
+  q17: { area: 'technology', order: 17, title: 'Ask the IT provider for the monthly fee and a one-page list of what it covers.', who: 'Owner', doneWhen: 'The monthly IT fee and the work it covers are written down. Many offices pay about $500 to $2,000.', windowLabel: '1–2 weeks', estimate: 'about 1–2 weeks', days: 14 },
+  q18: { area: 'technology', order: 18, title: 'Put collections, new patients, hygiene, overhead, and staff cost on one monthly page.', who: 'Owner', doneWhen: 'Those five numbers are reviewed together at least once a month.', windowLabel: '30–60 days', estimate: 'about 1–2 months', days: 60 },
+  q19: { area: 'technology', order: 19, title: 'Finish a HIPAA risk assessment, test backups, and note the cybersecurity steps from the last 12 months.', who: 'Owner + dental IT partner', doneWhen: 'The risk assessment, a backup test, and the cybersecurity notes are from the last 12 months.', windowLabel: '30–60 days', estimate: 'about 1–2 months', days: 60, optional: true },
 };
+const TECH_NOTE = 'DSO buyers move every practice onto their own systems. Old computers, scattered software, and unclear data become a price cut in diligence.';
 
 function parseCollections(raw) {
   if (raw == null) return null;
@@ -63,15 +74,18 @@ function computeReadiness(input) {
     }
   });
 
+  const requiredIds = Object.keys(ACTION_DEFS).filter((id) => !OPTIONAL_QUESTIONS.has(id));
+  const requiredAnswered = requiredIds.filter((id) => scores[id] != null).length;
   const areas = AREAS.map((area) => {
-    const values = area.questions.map((id) => scores[id]);
-    const complete = values.every((value) => value != null);
+    const required = area.questions.filter((id) => !OPTIONAL_QUESTIONS.has(id));
+    const complete = required.every((id) => scores[id] != null);
     if (!complete) return { id: area.id, label: area.label, score: null, complete: false };
+    const values = area.questions.map((id) => scores[id]).filter((value) => value != null);
     const average = values.reduce((sum, value) => sum + value, 0) / values.length;
     return { id: area.id, label: area.label, score: (average / 2) * 100, complete: true };
   });
 
-  const complete = answeredCount === Object.keys(ACTION_DEFS).length;
+  const complete = requiredAnswered === requiredIds.length;
   let overall = null;
   let band = null;
   if (complete) {
@@ -144,9 +158,15 @@ function computeReadiness(input) {
     message: 'Orientation only, based on FPS\'s published Arizona guide; not a valuation.',
   };
 
+  const techNeedsWork = ['q14', 'q15', 'q16', 'q17', 'q18', 'q19'].some((id) => scores[id] === 0 || scores[id] === 1);
+
   return {
     answeredCount,
+    requiredAnswered,
+    requiredTotal: requiredIds.length,
     complete,
+    techNeedsWork,
+    techNote: TECH_NOTE,
     areas: areas.map((area) => ({ ...area, score: area.score == null ? null : Math.round(area.score) })),
     overall,
     band,
@@ -182,6 +202,7 @@ if (scorecard) {
   const valueCopy = document.querySelector('#value-copy');
   const valueFigures = document.querySelector('#value-figures');
   const leaseLine = document.querySelector('#lease-line');
+  const techNote = document.querySelector('#tech-note');
   const bandLine = document.querySelector('#band-line');
   const zipNote = document.querySelector('#zip-note');
   const money = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
@@ -228,14 +249,15 @@ if (scorecard) {
   function render() {
     const model = currentInput();
     const result = computeReadiness(model);
-    progress.textContent = `${result.answeredCount} of ${Object.keys(ACTION_DEFS).length} answered`;
+    progress.textContent = `${result.requiredAnswered} of ${result.requiredTotal} answered`;
     ring.style.setProperty('--score', result.complete ? result.overall : 0);
     valueEl.textContent = result.complete ? String(result.overall) : '—';
 
+    const remaining = result.requiredTotal - result.requiredAnswered;
     if (!result.complete) {
-      title.textContent = result.answeredCount ? 'Your picture is taking shape' : 'Start with your goal';
-      copy.textContent = result.answeredCount
-        ? `Answer ${Object.keys(ACTION_DEFS).length - result.answeredCount} more question${Object.keys(ACTION_DEFS).length - result.answeredCount === 1 ? '' : 's'} for the overall score.`
+      title.textContent = result.requiredAnswered ? 'Your picture is taking shape' : 'Start with your goal';
+      copy.textContent = result.requiredAnswered
+        ? `Answer ${remaining} more question${remaining === 1 ? '' : 's'} for the overall score.`
         : 'Your score, actions, and planning window will appear as you answer. Nothing is stored or sent.';
       link.textContent = 'Continue the questions';
       link.href = '#setup';
@@ -262,6 +284,10 @@ if (scorecard) {
     }
 
     leaseLine.hidden = !result.leaseIsWeakest;
+    if (techNote) {
+      techNote.hidden = !result.techNeedsWork;
+      techNote.textContent = result.techNote;
+    }
     bandLine.textContent = result.complete ? `Overall ${result.overall} · ${result.band}` : 'Overall score appears after every question is answered.';
 
     areaBars.replaceChildren();
