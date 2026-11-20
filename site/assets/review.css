@@ -1,0 +1,71 @@
+.fps-review-btn, .fps-review-panel { font-family: "Source Sans 3", Satoshi, sans-serif; }
+.fps-review-btn {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 100001;
+  min-height: 48px;
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: #F59E0B;
+  color: #1f1300;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0,0,0,.2);
+}
+.fps-review-panel {
+  position: fixed;
+  left: 16px;
+  bottom: 72px;
+  z-index: 100001;
+  width: min(340px, calc(100vw - 32px));
+  max-height: min(50vh, 420px);
+  overflow: auto;
+  background: #fff;
+  color: #1f1300;
+  border: 1px solid #F59E0B;
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(0,0,0,.18);
+  padding: 12px;
+}
+.fps-review-panel[hidden] { display: none !important; }
+.fps-review-panel h2 { margin: 0 0 8px; font-size: 16px; }
+.fps-review-panel ol { margin: 0; padding-left: 1.2rem; }
+.fps-review-panel li { margin: 0 0 8px; }
+.fps-review-panel button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  padding: 4px 0;
+  font: inherit;
+  cursor: pointer;
+  min-height: 44px;
+}
+.fps-review-panel .wip-kind { font-size: 11px; font-weight: 700; letter-spacing: .04em; }
+.wip { scroll-margin-top: 120px; }
+body.fps-review-on .wip {
+  background: #FFF3B0;
+  box-shadow: inset 3px 0 0 #F59E0B;
+  padding: 0.1em 0.3em;
+  border-radius: 2px;
+}
+body.fps-review-on .wip-gap {
+  background: #FDE2E1;
+  box-shadow: inset 3px 0 0 #DC2626;
+}
+.wip-tag { font-weight: 700; font-size: 11px; letter-spacing: .03em; margin-right: 4px; }
+body.fps-review-on .wip .wip-tag { color: #92400e; }
+body.fps-review-on .wip-gap .wip-tag { color: #991b1b; }
+.wip.fps-wip-pulse { animation: fps-wip-pulse .7s ease 2; }
+@keyframes fps-wip-pulse {
+  0% { outline: 3px solid #F59E0B; }
+  100% { outline: 3px solid transparent; }
+}
+.fps-review-table-wrap { overflow-x: auto; }
+.fps-review-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.fps-review-table th, .fps-review-table td { border-bottom: 1px solid #dce4ec; text-align: left; padding: 8px; vertical-align: top; }
+.fps-review-table th { font-size: 12px; letter-spacing: .04em; text-transform: uppercase; }
+.fps-preview-banner a { color: #fff; font-weight: 700; }
