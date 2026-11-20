@@ -46,6 +46,8 @@
     INQUIRY_FIELDS.forEach(function (pair) {
       add(payload, pair[1], fieldValue(form, pair[0]));
     });
+    add(payload, 'county', fieldValue(form, 'county'));
+    add(payload, 'yearsToSale', fieldValue(form, 'years'));
     return payload;
   }
 
@@ -65,7 +67,8 @@
       var value = figure.textContent.trim();
       if (label && value && value !== '—') payload[label] = value;
     });
-    add(payload, 'Years to sale', fieldValue(form, 'years'));
+    add(payload, 'county', fieldValue(form, 'county'));
+    add(payload, 'yearsToSale', fieldValue(form, 'years'));
     return payload;
   }
 
