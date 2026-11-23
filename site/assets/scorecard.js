@@ -4,6 +4,8 @@
 // financial 24, revenue 16, lease 12, team 16, systems 11, AI visibility 9, technology 12.
 // Goal weights only rank weak answers. They do not change the score.
 // q19 is optional. The overall score does not wait on it.
+// q5 (lease terms) is required only when the office is leased or the owner is not sure.
+// Owners are not scored on lease terms. The lease area is treated as complete for them.
 
 const SCORE_WEIGHTS = { financial: 24, revenue: 16, lease: 12, team: 16, systems: 11, visibility: 9, technology: 12 };
 const GOAL_WEIGHTS = {
@@ -74,13 +76,28 @@ function computeReadiness(input) {
     }
   });
 
-  const requiredIds = Object.keys(ACTION_DEFS).filter((id) => !OPTIONAL_QUESTIONS.has(id));
-  const requiredAnswered = requiredIds.filter((id) => scores[id] != null).length;
+  const occupancy = input.occupancy || '';
+  const leaseDetailApplies = occupancy === 'lease' || occupancy === 'unsure';
+  const ownsBuilding = occupancy === 'own';
+  const requiredIds = Object.keys(ACTION_DEFS).filter((id) => {
+    if (OPTIONAL_QUESTIONS.has(id)) return false;
+    if (id === 'q5' && !leaseDetailApplies) return false;
+    return true;
+  });
+  requiredIds.push('occupancy');
+  const occupancyAnswered = occupancy === 'own' || occupancy === 'lease' || occupancy === 'unsure';
+  const requiredAnswered = requiredIds.filter((id) => (id === 'occupancy' ? occupancyAnswered : scores[id] != null)).length;
   const areas = AREAS.map((area) => {
-    const required = area.questions.filter((id) => !OPTIONAL_QUESTIONS.has(id));
+    if (area.id === 'lease' && ownsBuilding) {
+      return { id: area.id, label: area.label, score: 100, complete: true };
+    }
+    const required = area.questions.filter((id) => !OPTIONAL_QUESTIONS.has(id) && !(id === 'q5' && !leaseDetailApplies));
     const complete = required.every((id) => scores[id] != null);
     if (!complete) return { id: area.id, label: area.label, score: null, complete: false };
-    const values = area.questions.map((id) => scores[id]).filter((value) => value != null);
+    const values = area.questions
+      .filter((id) => scores[id] != null && !(id === 'q5' && !leaseDetailApplies))
+      .map((id) => scores[id]);
+    if (!values.length) return { id: area.id, label: area.label, score: null, complete: false };
     const average = values.reduce((sum, value) => sum + value, 0) / values.length;
     return { id: area.id, label: area.label, score: (average / 2) * 100, complete: true };
   });
@@ -95,10 +112,10 @@ function computeReadiness(input) {
     band = bandFor(overall);
   }
 
-  const leaseIsWeakest = complete && scores.q5 < 2 && Object.values(scores).every((value) => scores.q5 <= value);
+  const leaseIsWeakest = complete && leaseDetailApplies && scores.q5 != null && scores.q5 < 2 && Object.entries(scores).every(([id, value]) => id === 'q5' || value == null || scores.q5 <= value);
 
   const goalWeights = GOAL_WEIGHTS[input.goal] || null;
-  const weak = Object.keys(ACTION_DEFS).filter((id) => scores[id] === 0 || scores[id] === 1).map((id) => {
+  const weak = Object.keys(ACTION_DEFS).filter((id) => (scores[id] === 0 || scores[id] === 1) && !(id === 'q5' && !leaseDetailApplies)).map((id) => {
     const def = ACTION_DEFS[id];
     const label = labels[id] ? `You answered “${labels[id]}.”` : 'This answer is still a gap.';
     return {
@@ -144,7 +161,10 @@ function computeReadiness(input) {
   const missing = [];
   if (input.practiceType !== 'general') missing.push('General dentistry selected');
   if (input.state !== 'AZ') missing.push('Arizona selected');
-  if (scores.q5 == null) missing.push('the lease question answered');
+  if (ownsBuilding) {
+    // An owned building is not a lease-term gap.
+  } else if (!leaseDetailApplies) missing.push('whether you own or lease the office');
+  else if (scores.q5 == null) missing.push('the lease question answered');
   else if (scores.q5 < 2) missing.push('a resolved lease (a weak lease is a hard blocker)');
   if (amount == null) missing.push('annual collections');
 
@@ -171,6 +191,8 @@ function computeReadiness(input) {
     overall,
     band,
     leaseIsWeakest,
+    occupancy,
+    ownsBuilding,
     shown,
     alsoOpen,
     readiness,
@@ -201,6 +223,9 @@ if (scorecard) {
   const readinessCopy = document.querySelector('#readiness-copy');
   const valueCopy = document.querySelector('#value-copy');
   const valueFigures = document.querySelector('#value-figures');
+  const leaseDetail = document.querySelector('#lease-detail');
+  const ownNote = document.querySelector('#own-note');
+  const occupancySummary = document.querySelector('#occupancy-summary');
   const leaseLine = document.querySelector('#lease-line');
   const techNote = document.querySelector('#tech-note');
   const bandLine = document.querySelector('#band-line');
@@ -229,6 +254,7 @@ if (scorecard) {
       practiceType: practiceType ? practiceType.value : '',
       state: practiceState ? practiceState.value : '',
       collections: collections ? collections.value : '',
+      occupancy: (scorecard.querySelector('input[name="occupancy"]:checked') || {}).value || '',
     };
   }
 
@@ -249,11 +275,14 @@ if (scorecard) {
   function render() {
     const model = currentInput();
     const result = computeReadiness(model);
-    progress.textContent = `${result.requiredAnswered} of ${result.requiredTotal} answered`;
+    const displayTotal = result.ownsBuilding || result.occupancy === 'lease' || result.occupancy === 'unsure'
+      ? result.requiredTotal
+      : result.requiredTotal + 1;
+    progress.textContent = `${result.requiredAnswered} of ${displayTotal} answered`;
     ring.style.setProperty('--score', result.complete ? result.overall : 0);
     valueEl.textContent = result.complete ? String(result.overall) : '—';
 
-    const remaining = result.requiredTotal - result.requiredAnswered;
+    const remaining = displayTotal - result.requiredAnswered;
     if (!result.complete) {
       title.textContent = result.requiredAnswered ? 'Your picture is taking shape' : 'Start with your goal';
       copy.textContent = result.requiredAnswered
@@ -283,6 +312,18 @@ if (scorecard) {
       link.href = '#results';
     }
 
+    const occupancyLabels = { own: 'Own the building', lease: 'Lease', unsure: 'Not sure' };
+    if (leaseDetail) leaseDetail.hidden = result.occupancy !== 'lease' && result.occupancy !== 'unsure';
+    if (result.ownsBuilding) {
+      scorecard.querySelectorAll('input[name="q5"]').forEach((input) => { input.checked = false; });
+    }
+    if (ownNote) ownNote.hidden = !result.ownsBuilding;
+    if (occupancySummary) {
+      occupancySummary.hidden = !result.occupancy;
+      occupancySummary.textContent = result.occupancy
+        ? `Office space: ${occupancyLabels[result.occupancy] || result.occupancy}${result.ownsBuilding ? '. Owning the real estate can be sold or leased back to the buyer; we\'ll cover this in your Value Check.' : ''}`
+        : '';
+    }
     const emailCard = document.querySelector('#results-email');
     const emailThanks = document.querySelector('#results-email-thanks');
     if (emailCard) emailCard.hidden = !result.complete || (emailThanks && !emailThanks.hidden);
