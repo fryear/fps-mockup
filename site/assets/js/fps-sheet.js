@@ -69,6 +69,11 @@
     });
     add(payload, 'county', fieldValue(form, 'county'));
     add(payload, 'yearsToSale', fieldValue(form, 'years'));
+    var occupancyInput = document.querySelector('input[name="occupancy"]:checked');
+    if (occupancyInput) {
+      var occupancyLabel = document.querySelector('label[for="' + occupancyInput.id + '"]');
+      add(payload, 'own_or_lease', occupancyLabel ? occupancyLabel.textContent.trim() : occupancyInput.value);
+    }
     return payload;
   }
 
