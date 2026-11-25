@@ -4,14 +4,14 @@
   "intro": "Answers come from pages already on this preview. Your question stays in this browser. Nothing is sent or stored.",
   "agentNote": "A later version could run as a ChatGPT Business Agent once brokerages qualify. OpenAI’s Businesses in ChatGPT beta lets eligible US businesses claim a profile, keep details current, and see aggregated insights. This demo does not connect to ChatGPT.",
   "fallback": {
-    "text": "I can only answer from this preview. For a private readiness check, use the free scorecard. To see practices, open listings. To talk with a person, contact Karl.",
+    "text": "I can only answer from this preview. For a private readiness check, use the Seller Scorecard. To see practices, open listings. To talk with a person, contact Karl.",
     "links": ["scorecard", "listings", "contact"]
   },
   "entries": [
     {
       "id": "scorecard",
       "keywords": ["scorecard", "readiness", "how ready", "self-check", "free score", "buyer ready"],
-      "text": "The free scorecard is a private self-check. It scores financial evidence, revenue, the lease, the team, systems, AI visibility, and technology and data. You get a band, ranked actions, and a planning window. No email is required, and nothing is stored.",
+      "text": "The Seller Scorecard is a private self-check. It scores financial evidence, revenue, the lease, the team, systems, AI visibility, and technology and data. You get a band, ranked actions, and a planning window. Your first name, last name, email, and cell phone are required before the result is shown. Details go only to Frye Practice Sales.",
       "links": ["scorecard"]
     },
     {
@@ -23,7 +23,7 @@
     {
       "id": "sell",
       "keywords": ["sell", "selling", "seller", "exit", "list my practice", "transition"],
-      "text": "Selling starts with a confidential conversation about timing and goals, then a valuation, a prospectus, buyer matching, and a coordinated close. Staff and patients are part of the plan. You can start with the free scorecard if you want a private picture first.",
+      "text": "Selling starts with a confidential conversation about timing and goals, then a valuation, a prospectus, buyer matching, and a coordinated close. Staff and patients are part of the plan. You can start with the Seller Scorecard if you want a private picture first.",
       "links": ["sellers", "scorecard", "contact"]
     },
     {
@@ -41,13 +41,13 @@
     {
       "id": "lease",
       "keywords": ["lease", "landlord", "assignable", "rent", "real estate"],
-      "text": "A weak or unclear lease can block a sale even when the numbers look fine. Counsel should review assignment, options, and landlord consent. If that is your weakest scorecard answer, the result says the practice is not ready to market.",
+      "text": "A weak or unclear lease can slow a sale even when the numbers look fine. A Frye Practice Sales broker can review your lease and real estate options with you, including assignment, renewal options, and landlord consent. If you own the building, that same conversation covers a sale or leaseback.",
       "links": ["scorecard", "contact"]
     },
     {
       "id": "advisory",
       "keywords": ["advisory", "assessment", "retainer", "price", "cost", "2500", "5000", "paid", "offer", "kpi", "dashboard", "staffing", "diligence prep", "benchmark"],
-      "text": "The free scorecard stands on its own. The Practice Value Check is the paid entry offer, proposed at $1,500–$3,500. Full Sell-Ready Advisory is the Readiness Assessment, proposed at $2,500–$5,000. Other proposed modules are a Technology and Data Audit with a dental IT partner, a monthly Owner KPI Dashboard for the 12–24 months before a sale, a Staffing and Pay Benchmark, and Pre-Sale Diligence Prep. The AI and online presence cleanup is a proposed add-on at $1,500–$3,000. These figures are proposals for this preview, not a quote. Advisory services are provided by Andrew Frye under a separate agreement and fixed fee. They are not real estate or brokerage services. Andrew Frye does not find buyers, set listing prices or negotiate sales. There is no fee sharing between advisory and brokerage. You are free to choose any broker.",
+      "text": "The Seller Scorecard stands on its own. Frye Practice Advisory offers a Practice Value Check, a Readiness Assessment, a Technology and Data Audit with a dental IT partner, an Owner KPI Dashboard, a Staffing and Pay Benchmark, Pre-Sale Diligence Prep, a Value-Building Retainer, and an AI and online presence cleanup. For this pilot those are by conversation, not a posted price. Book a free 20-minute call. Frye Practice Advisory is a separate affiliate from Frye Practice Sales. Separate agreement and billing. No fee sharing. You are free to choose any broker.",
       "links": ["advisor", "advisory", "scorecard"]
     },
     {
@@ -59,19 +59,19 @@
     {
       "id": "tech-data",
       "keywords": ["technology", "tech stack", "tech data", "data readiness", "dentrix", "eaglesoft", "open dental", "dentally", "computers", "operating system", "it provider", "software subscription", "hipaa", "cybersecurity", "backups"],
-      "text": "Technology and data is the seventh scorecard area. It asks which software you use, such as Dentrix, Eaglesoft, Open Dental, or Dentally, and whether it is current or in the cloud. It also asks about computer age, software subscriptions, the monthly IT fee, and whether key numbers are in one place each month. An optional question covers a HIPAA risk assessment, backups, and cybersecurity in the last 12 months. A low score matters. DSO buyers move every practice onto their own systems. Old computers, scattered software, and unclear data become a price cut in diligence. The Technology and Data Audit is delivered with a dental IT partner.",
+      "text": "Technology and data is the seventh Seller Scorecard area. It asks which software you use, such as Dentrix, Dentrix Ascend, Eaglesoft, Open Dental, Curve Dental, or Denticon, whether that software is cloud-based or on a server in the office, and how old the office computers are. Newer computers and cloud software score higher. Computers older than 5 years point to a quick win: plan upgrades, and check Windows 11 and HIPAA readiness. It also asks about the monthly IT fee and whether key numbers are in one place each month. A software-subscription list is a deeper follow-up in the Practice Value Check, not a Seller Scorecard question. An optional question covers a HIPAA risk assessment, backups, and cybersecurity in the last 12 months. DSO buyers move every practice onto their own systems. Old computers and unclear data can become a price cut in diligence.",
       "links": ["advisor", "scorecard", "advisory"]
     },
     {
       "id": "value-check",
       "keywords": ["practice value check", "value check", "1500", "3500", "entry offer"],
-      "text": "The Practice Value Check is the paid entry offer between the free scorecard and full Sell-Ready Advisory. The proposed price is $1,500–$3,500. It covers a short review of financials, staff cost versus local pay, the tech stack, and the top five value fixes. That price is a proposal for this preview, not a quote. It is a separate fixed fee from brokerage. It is not credited against a brokerage fee, and it is not shared with brokerage. You are free to choose any broker. The work aims to improve the file a buyer will read. It does not promise a higher price.",
+      "text": "The Practice Value Check is the next conversation after the Seller Scorecard, before full Sell-Ready Advisory. For this pilot it is by conversation, not a posted price. Book a free 20-minute call. It covers a short review of financials, staff cost versus local pay, the tech stack, and the top five value fixes. A software-subscription list can be part of that deeper review. Frye Practice Advisory is separate from Frye Practice Sales. Separate agreement and billing. No fee sharing. You are free to choose any broker. The work aims to improve the file a buyer will read. It does not promise a higher price.",
       "links": ["advisor", "advisory", "scorecard"]
     },
     {
       "id": "fees",
       "keywords": ["commission", "success fee", "fee sharing", "fee split", "separate fee", "advisory versus brokerage", "advisory vs brokerage", "choose any broker", "credited", "referral fee"],
-      "text": "Advisory services are provided by Andrew Frye under a separate agreement and fixed fee. They are not real estate or brokerage services. Andrew Frye does not find buyers, set listing prices or negotiate sales. There is no fee sharing between advisory and brokerage. You are free to choose any broker. Brokerage is a different agreement, provided by Frye Practice Sales under Karl Frye's Arizona license. AZ license #[to confirm]. This preview does not state a commission, a success fee, or a fee tied to closing.",
+      "text": "Frye Practice Sales is the brokerage. Karl lists and sells the practice. Frye Practice Advisory is a separate affiliate for pre-sale readiness advice, with a separate agreement and billing. No fee sharing. You are free to choose any broker. Brokerage is provided by Frye Practice Sales under Karl Frye's Arizona license. AZ license #[to confirm]. This preview does not state a commission, a success fee, or a fee tied to closing.",
       "links": ["advisor", "advisory", "contact"]
     },
     {
@@ -100,7 +100,7 @@
     }
   ],
   "links": {
-    "scorecard": { "label": "Free scorecard", "path": "scorecard/" },
+    "scorecard": { "label": "Seller Scorecard", "path": "scorecard/" },
     "listings": { "label": "Current listings", "path": "listings/" },
     "contact": { "label": "Talk to Karl", "path": "contact/#contact-form" },
     "advisor": { "label": "Talk to an advisor", "path": "contact/?topic=Advisory#contact-form" },

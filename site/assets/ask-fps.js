@@ -161,9 +161,9 @@
         intro: 'The answer file did not load. You can still use the scorecard, listings, or the contact page.',
         agentNote: 'This demo does not connect to ChatGPT.',
         entries: [],
-        fallback: { text: 'Try the free scorecard, the listings, or talk to Karl.', links: ['scorecard', 'listings', 'contact'] },
+        fallback: { text: 'Try the Seller Scorecard, the listings, or talk to Karl.', links: ['scorecard', 'listings', 'contact'] },
         links: {
-          scorecard: { label: 'Free scorecard', path: 'scorecard/' },
+          scorecard: { label: 'Seller Scorecard', path: 'scorecard/' },
           listings: { label: 'Current listings', path: 'listings/' },
           contact: { label: 'Talk to Karl', path: 'contact/#contact-form' },
           advisor: { label: 'Talk to an advisor', path: 'contact/?topic=Advisory#contact-form' }

@@ -21,14 +21,14 @@ const AREAS = [
   { id: 'team', label: 'Team & owner dependence', questions: ['q6', 'q7'] },
   { id: 'systems', label: 'Systems & transition', questions: ['q8', 'q9', 'q10'] },
   { id: 'visibility', label: 'AI & online visibility', questions: ['q11', 'q12', 'q13'] },
-  { id: 'technology', label: 'Technology & data', questions: ['q14', 'q15', 'q16', 'q17', 'q18', 'q19'] },
+  { id: 'technology', label: 'Technology & data', questions: ['q14', 'q15', 'q17', 'q18', 'q19'] },
 ];
 const ACTION_DEFS = {
   q1: { area: 'financial', order: 1, title: 'Get three years of statements and tax returns, and reconcile collections.', who: 'CPA', doneWhen: 'Three years of statements and returns are in one place, and collections reconcile.', windowLabel: '30–60 days', estimate: 'about 1–2 months', days: 60 },
   q2: { area: 'financial', order: 2, title: 'List owner and one-time expenses with receipts, and include market pay for a replacement clinician.', who: 'Owner + CPA', doneWhen: 'Owner and one-time costs are listed with receipts, including market replacement-clinician pay.', windowLabel: '2–4 weeks', estimate: 'about 2–4 weeks', days: 28 },
   q3: { area: 'financial', order: 3, title: 'Start a monthly dashboard for collections, costs, and cash.', who: 'Owner', doneWhen: 'The monthly collections, costs, and cash dashboard has been reviewed for 90 days.', windowLabel: '90 days', estimate: 'about 3 months', days: 90 },
   q4: { area: 'revenue', order: 4, title: 'Export collections by payer and find the top payer’s share.', who: 'Owner', doneWhen: 'Collections by payer are exported and the top-payer share is known.', windowLabel: '2–4 weeks', estimate: 'about 2–4 weeks', days: 28 },
-  q5: { area: 'lease', order: 5, title: 'Have counsel review assignment rights, renewal options, and landlord consent.', who: 'Counsel', doneWhen: 'Counsel has reviewed assignment, options, and landlord consent.', windowLabel: '30–90 days', estimate: 'about 1–3 months', days: 90, hard: true },
+  q5: { area: 'lease', order: 5, title: 'A Frye Practice Sales broker can review your lease and real estate options with you (assignment, renewal options, landlord consent).', who: 'Frye Practice Sales', doneWhen: 'A Frye Practice Sales broker has reviewed assignment, renewal options, and landlord consent with you.', windowLabel: '30–90 days', estimate: 'about 1–3 months', days: 90 },
   q6: { area: 'team', order: 6, title: 'Measure owner production against associate and hygiene production, then write a coverage and retention plan.', who: 'Owner', doneWhen: 'Owner, associate, and hygiene output are measured, and a coverage and retention plan is written.', windowLabel: '6–18 months', estimate: '6–18 months', days: 540 },
   q7: { area: 'team', order: 7, title: 'Write down roles, compensation, and key agreements.', who: 'Owner', doneWhen: 'Roles, compensation, and agreements are documented.', windowLabel: '30–60 days', estimate: 'about 1–2 months', days: 60 },
   q8: { area: 'systems', order: 8, title: 'Build a monthly report pack you can repeat without a scramble.', who: 'Manager', doneWhen: 'A monthly report pack can be produced the same way each time.', windowLabel: '30–60 days', estimate: 'about 1–2 months', days: 60 },
@@ -37,9 +37,8 @@ const ACTION_DEFS = {
   q11: { area: 'visibility', order: 11, title: 'Claim the Google Business Profile and make the hours, services, and phone number current.', who: 'Manager', doneWhen: 'The Google Business Profile is claimed, and hours, services, and the phone number match the practice.', windowLabel: '1–2 weeks', estimate: 'about 1–2 weeks', days: 14 },
   q12: { area: 'visibility', order: 12, title: 'Claim the ChatGPT Business Hub profile and keep the public details current.', who: 'Owner', doneWhen: 'The Business Hub profile is claimed, and the description, hours, and services are filled in.', windowLabel: '1–2 weeks', estimate: 'about 1–2 weeks', days: 14 },
   q13: { area: 'visibility', order: 13, title: 'Align hours, services, and insurance on Google, Yelp, and Healthgrades, and tend recent reviews.', who: 'Manager', doneWhen: 'Those listings match, and recent reviews are answered with the rating at 4.5 or higher.', windowLabel: '2–4 weeks', estimate: 'about 2–4 weeks', days: 28 },
-  q14: { area: 'technology', order: 14, title: 'Write down the practice software, the version, and whether it is current or in the cloud.', who: 'Owner + dental IT partner', doneWhen: 'The software name, version, and cloud or server setup are written down.', windowLabel: '1–2 weeks', estimate: 'about 1–2 weeks', days: 14 },
-  q15: { area: 'technology', order: 15, title: 'List each office computer and its operating system. Replace machines that are old or unsupported.', who: 'Owner + dental IT partner', doneWhen: 'Every computer has an age and a supported operating system, or a replacement date.', windowLabel: '30–90 days', estimate: 'about 1–3 months', days: 90 },
-  q16: { area: 'technology', order: 16, title: 'List every software subscription and the yearly cost, then review the list.', who: 'Manager', doneWhen: 'Imaging, texting, payroll, reporting, and the other subscriptions are on one list with a review date.', windowLabel: '2–4 weeks', estimate: 'about 2–4 weeks', days: 28 },
+  q14: { area: 'technology', order: 14, title: 'Confirm whether the practice software is cloud-based or on a server in the office.', who: 'Owner + dental IT partner', doneWhen: 'The software is identified as cloud-based or server-based.', windowLabel: '1–2 weeks', estimate: 'about 1–2 weeks', days: 14 },
+  q15: { area: 'technology', order: 15, title: 'Plan the next computer refresh.', titleLow: 'Quick win: plan upgrades, and check Windows 11 and HIPAA readiness.', who: 'Owner + dental IT partner', doneWhen: 'Office computers are mostly 2 years or newer, or a replacement date is set. Windows 11 and HIPAA readiness are checked.', windowLabel: '30–90 days', estimate: 'about 1–3 months', days: 90 },
   q17: { area: 'technology', order: 17, title: 'Ask the IT provider for the monthly fee and a one-page list of what it covers.', who: 'Owner', doneWhen: 'The monthly IT fee and the work it covers are written down. Many offices pay about $500 to $2,000.', windowLabel: '1–2 weeks', estimate: 'about 1–2 weeks', days: 14 },
   q18: { area: 'technology', order: 18, title: 'Put collections, new patients, hygiene, overhead, and staff cost on one monthly page.', who: 'Owner', doneWhen: 'Those five numbers are reviewed together at least once a month.', windowLabel: '30–60 days', estimate: 'about 1–2 months', days: 60 },
   q19: { area: 'technology', order: 19, title: 'Finish a HIPAA risk assessment, test backups, and note the cybersecurity steps from the last 12 months.', who: 'Owner + dental IT partner', doneWhen: 'The risk assessment, a backup test, and the cybersecurity notes are from the last 12 months.', windowLabel: '30–60 days', estimate: 'about 1–2 months', days: 60, optional: true },
@@ -53,6 +52,39 @@ function parseCollections(raw) {
   const value = Number(cleaned);
   if (!Number.isFinite(value) || value <= 0) return null;
   return value;
+}
+
+function validEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function validPhone(value) {
+  const digits = String(value).replace(/\D/g, '');
+  return digits.length === 10 || (digits.length === 11 && digits.startsWith('1'));
+}
+
+function readContactGate() {
+  const first = (document.querySelector('#gate-first') || {}).value || '';
+  const last = (document.querySelector('#gate-last') || {}).value || '';
+  const email = (document.querySelector('#gate-email') || {}).value || '';
+  const phone = (document.querySelector('#gate-phone') || {}).value || '';
+  const firstName = first.trim();
+  const lastName = last.trim();
+  const emailValue = email.trim();
+  const phoneValue = phone.trim();
+  const errors = [];
+  if (!firstName) errors.push('first name');
+  if (!lastName) errors.push('last name');
+  if (!validEmail(emailValue)) errors.push('a valid email');
+  if (!validPhone(phoneValue)) errors.push('a valid cell phone');
+  return {
+    ok: errors.length === 0,
+    firstName,
+    lastName,
+    email: emailValue,
+    phone: phoneValue,
+    errors,
+  };
 }
 
 function bandFor(score) {
@@ -123,7 +155,7 @@ function computeReadiness(input) {
       score: scores[id],
       area: def.area,
       order: def.order,
-      title: def.title,
+      title: scores[id] === 0 && def.titleLow ? def.titleLow : def.title,
       why: label,
       who: def.who,
       doneWhen: def.doneWhen,
@@ -165,7 +197,7 @@ function computeReadiness(input) {
     // An owned building is not a lease-term gap.
   } else if (!leaseDetailApplies) missing.push('whether you own or lease the office');
   else if (scores.q5 == null) missing.push('the lease question answered');
-  else if (scores.q5 < 2) missing.push('a resolved lease (a weak lease is a hard blocker)');
+  else if (scores.q5 < 2) missing.push('a lease a buyer can take over');
   if (amount == null) missing.push('annual collections');
 
   const value = missing.length ? {
@@ -178,7 +210,7 @@ function computeReadiness(input) {
     message: 'Orientation only, based on FPS\'s published Arizona guide; not a valuation.',
   };
 
-  const techNeedsWork = ['q14', 'q15', 'q16', 'q17', 'q18', 'q19'].some((id) => scores[id] === 0 || scores[id] === 1);
+  const techNeedsWork = ['q14', 'q15', 'q17', 'q18', 'q19'].some((id) => scores[id] === 0 || scores[id] === 1);
 
   return {
     answeredCount,
@@ -223,6 +255,10 @@ if (scorecard) {
   const readinessCopy = document.querySelector('#readiness-copy');
   const valueCopy = document.querySelector('#value-copy');
   const valueFigures = document.querySelector('#value-figures');
+  const contactGate = document.querySelector('#contact-gate');
+  const gateError = document.querySelector('#gate-error');
+  const resultsLock = document.querySelector('#results-lock');
+  const resultsBody = document.querySelector('#results-body');
   const leaseDetail = document.querySelector('#lease-detail');
   const ownNote = document.querySelector('#own-note');
   const occupancySummary = document.querySelector('#occupancy-summary');
@@ -278,12 +314,26 @@ if (scorecard) {
     const displayTotal = result.ownsBuilding || result.occupancy === 'lease' || result.occupancy === 'unsure'
       ? result.requiredTotal
       : result.requiredTotal + 1;
+    const gate = readContactGate();
     progress.textContent = `${result.requiredAnswered} of ${displayTotal} answered`;
-    ring.style.setProperty('--score', result.complete ? result.overall : 0);
-    valueEl.textContent = result.complete ? String(result.overall) : '—';
+    const showScore = gate.ok && result.complete;
+    ring.style.setProperty('--score', showScore ? result.overall : 0);
+    valueEl.textContent = showScore ? String(result.overall) : '—';
 
     const remaining = displayTotal - result.requiredAnswered;
-    if (!result.complete) {
+    if (gateError) {
+      const showError = contactGate && contactGate.dataset.touched === 'yes' && !gate.ok;
+      gateError.hidden = !showError;
+      gateError.textContent = showError ? `Add ${gate.errors.join(', ')} to see your Seller Scorecard.` : '';
+    }
+    if (resultsLock) resultsLock.hidden = gate.ok;
+    if (resultsBody) resultsBody.hidden = !gate.ok;
+    if (!gate.ok) {
+      title.textContent = 'Add your contact details';
+      copy.textContent = 'First name, last name, a valid email, and a valid cell phone are required before your Seller Scorecard is shown. Your details go only to Frye Practice Sales.';
+      link.textContent = 'Add your details';
+      link.href = '#contact-gate';
+    } else if (!result.complete) {
       title.textContent = result.requiredAnswered ? 'Your picture is taking shape' : 'Start with your goal';
       copy.textContent = result.requiredAnswered
         ? `Answer ${remaining} more question${remaining === 1 ? '' : 's'} for the overall score.`
@@ -321,12 +371,18 @@ if (scorecard) {
     if (occupancySummary) {
       occupancySummary.hidden = !result.occupancy;
       occupancySummary.textContent = result.occupancy
-        ? `Office space: ${occupancyLabels[result.occupancy] || result.occupancy}${result.ownsBuilding ? '. Owning the real estate can be sold or leased back to the buyer; we\'ll cover this in your Value Check.' : ''}`
+        ? `Office space: ${occupancyLabels[result.occupancy] || result.occupancy}${result.ownsBuilding ? '. Owning the real estate can be sold or leased back to the buyer. A Frye Practice Sales broker can walk through those options with you.' : ''}`
         : '';
     }
     const emailCard = document.querySelector('#results-email');
     const emailThanks = document.querySelector('#results-email-thanks');
-    if (emailCard) emailCard.hidden = !result.complete || (emailThanks && !emailThanks.hidden);
+    if (emailCard) emailCard.hidden = !gate.ok || !result.complete || (emailThanks && !emailThanks.hidden);
+    const resultsName = document.querySelector('#results-name');
+    const resultsEmail = document.querySelector('#results-email-input');
+    const resultsPhone = document.querySelector('#results-phone');
+    if (resultsName && gate.firstName) resultsName.value = `${gate.firstName} ${gate.lastName}`.trim();
+    if (resultsEmail && gate.email) resultsEmail.value = gate.email;
+    if (resultsPhone && gate.phone) resultsPhone.value = gate.phone;
     leaseLine.hidden = !result.leaseIsWeakest;
     if (techNote) {
       techNote.hidden = !result.techNeedsWork;
@@ -370,12 +426,6 @@ if (scorecard) {
         card.dataset.actionId = action.id;
         const heading = document.createElement('h3');
         heading.textContent = action.title;
-        if (action.hard) {
-          const flag = document.createElement('span');
-          flag.className = 'mock-note';
-          flag.textContent = 'Hard blocker';
-          heading.append(flag);
-        }
         const why = document.createElement('p');
         why.textContent = action.why;
         const dl = document.createElement('dl');
@@ -437,6 +487,12 @@ if (scorecard) {
     });
   }
   if (collections) collections.addEventListener('input', render);
+  if (contactGate) {
+    contactGate.addEventListener('input', () => {
+      contactGate.dataset.touched = 'yes';
+      render();
+    });
+  }
   if (zip) zip.addEventListener('input', render);
 
   const resetButton = document.querySelector('#reset-scorecard');
