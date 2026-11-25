@@ -43,7 +43,7 @@ main.fps-page.fps-score { display: block; }
 .fps-score label { display:block; font-size:12px; font-weight:700; margin-bottom:4px; }
 .fps-score input, .fps-score select, .fps-score textarea { width:100%; padding:10px; border:1px solid #dce4ec; border-radius:6px; font:inherit; color:#141B38; background:#fff; color-scheme:light; appearance:auto; }
 .fps-score select option, #results-email select option, #contact-form select option { color:#141B38; background-color:#fff; }
-.fps-score .options { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+.fps-score .options { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); grid-auto-rows:1fr; align-items:stretch; gap:8px; }
 .fps-score .options-4 { grid-template-columns:1fr 1fr; }
 .fps-org-split { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:16px 0; }
 .fps-org-split article { background:#fff; border:1px solid #dce4ec; border-radius:12px; padding:14px 16px; }
@@ -52,10 +52,13 @@ main.fps-page.fps-score { display: block; }
 .fps-gate-error { color:#9b2c2c; font-weight:700; }
 .scorecard-lead { max-width:720px; margin:8px 0 18px; }
 @media (max-width:700px) { .fps-org-split { grid-template-columns:1fr; } }
-.fps-score .option { position:relative; }
+.fps-score .option { position:relative; display:flex; align-items:stretch; min-width:0; height:100%; }
 .fps-score .option input { position:absolute; width:1px; height:1px; margin:0; padding:0; border:0; opacity:0; pointer-events:none; }
-.fps-score .option label { position:relative; z-index:1; display:flex; align-items:center; justify-content:center; width:100%; min-height:48px; margin:0; border:1px solid #dce4ec; border-radius:7px; padding:12px; text-align:center; font-size:16px; font-weight:500; line-height:1.3; cursor:pointer; touch-action:manipulation; }
-.fps-score .option input:checked + label { border-color:#3A8EC5; background:#EAF3FA; color:#141B38; font-weight:700; }
+.fps-score .option label { position:relative; z-index:1; display:flex; align-items:center; justify-content:center; width:100%; height:100%; min-height:48px; margin:0; border:1px solid #6aa3c8; border-radius:7px; padding:12px; text-align:center; font-size:16px; font-weight:600; line-height:1.3; color:#141B38; background:#EAF3FA; cursor:pointer; touch-action:manipulation; box-sizing:border-box; transition:background-color .15s ease, border-color .15s ease, color .15s ease; }
+.fps-score .option label:hover { background:#d3e7f5; border-color:#2d7ab0; }
+.fps-score .option input:focus-visible + label { outline:2px solid #141B38; outline-offset:2px; }
+.fps-score .option input:checked + label { border-color:#141B38; background:#141B38; color:#fff; font-weight:700; }
+.fps-score .option input:checked + label:hover { background:#243056; border-color:#243056; }
 .fps-score .q-number { display:inline-grid; place-items:center; width:28px; height:28px; border-radius:50%; background:#EAF3FA; color:#3A8EC5; font-size:12px; font-weight:700; margin-right:8px; }
 .fps-score .question-head { display:flex; gap:8px; align-items:flex-start; margin-bottom:10px; }
 .fps-score .score-panel { position:sticky; top:12px; background:#141B38; color:#fff; border-radius:14px; padding:20px; }
