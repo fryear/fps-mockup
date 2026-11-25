@@ -61,6 +61,8 @@ main.fps-page.fps-score { display: block; }
 .fps-score .option input:checked + label:hover { background:#243056; border-color:#243056; }
 .fps-score .q-number { display:inline-grid; place-items:center; width:28px; height:28px; border-radius:50%; background:#EAF3FA; color:#3A8EC5; font-size:12px; font-weight:700; margin-right:8px; }
 .fps-score .question-head { display:flex; gap:8px; align-items:flex-start; margin-bottom:10px; }
+.fps-score .question-card > .small { margin:0 0 10px; line-height:1.45; }
+.fps-score .question-head + .small { margin-top:0; }
 .fps-score .score-panel { position:sticky; top:12px; background:#141B38; color:#fff; border-radius:14px; padding:20px; }
 .fps-score .score-panel h2, .fps-score .score-panel strong { color:#fff; }
 .fps-score .score-panel p, .fps-score .progress-text, .fps-score .privacy-note { color:#d5e4ef; font-size:13px; }
