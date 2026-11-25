@@ -19,6 +19,18 @@
     if (value) payload[key] = value;
   }
 
+  function textOf(id) {
+    var el = document.getElementById(id);
+    return el ? String(el.value || '').trim() : '';
+  }
+
+  function choiceLabel(name) {
+    var input = document.querySelector('input[name="' + name + '"]:checked');
+    if (!input) return '';
+    var label = document.querySelector('label[for="' + input.id + '"]');
+    return label ? label.textContent.trim() : input.value;
+  }
+
   function send(payload) {
     var endpoint = window.FPS_SHEET_ENDPOINT;
     if (!endpoint) {
@@ -69,11 +81,21 @@
     });
     add(payload, 'county', fieldValue(form, 'county'));
     add(payload, 'yearsToSale', fieldValue(form, 'years'));
-    var occupancyInput = document.querySelector('input[name="occupancy"]:checked');
-    if (occupancyInput) {
-      var occupancyLabel = document.querySelector('label[for="' + occupancyInput.id + '"]');
-      add(payload, 'own_or_lease', occupancyLabel ? occupancyLabel.textContent.trim() : occupancyInput.value);
-    }
+    var first = textOf('gate-first');
+    var last = textOf('gate-last');
+    var fullName = (first + ' ' + last).trim() || fieldValue(form, 'name');
+    var email = textOf('gate-email') || fieldValue(form, 'email');
+    var phone = textOf('gate-phone') || fieldValue(form, 'phone');
+    add(payload, 'Name', fullName);
+    add(payload, 'name', fullName);
+    add(payload, 'first_name', first);
+    add(payload, 'last_name', last);
+    add(payload, 'Email', email);
+    add(payload, 'Phone', phone);
+    add(payload, 'phone', phone);
+    add(payload, 'own_or_lease', choiceLabel('occupancy'));
+    add(payload, 'cloud_or_server', choiceLabel('q14'));
+    add(payload, 'computer_age', choiceLabel('q15'));
     return payload;
   }
 
@@ -85,6 +107,12 @@
       return;
     }
     var kind = form.getAttribute('data-fps-sheet');
+    if (kind === 'scorecard') {
+      var email = textOf('gate-email') || fieldValue(form, 'email');
+      var phoneDigits = (textOf('gate-phone') || fieldValue(form, 'phone')).replace(/\D/g, '');
+      var phoneOk = phoneDigits.length === 10 || (phoneDigits.length === 11 && phoneDigits.charAt(0) === '1');
+      if (!textOf('gate-first') || !textOf('gate-last') || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !phoneOk) return;
+    }
     var payload = kind === 'scorecard' ? scorecardPayload(form) : inquiryPayload(form);
     send(payload).then(function () { thank(form); });
   }
