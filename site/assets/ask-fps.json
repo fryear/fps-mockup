@@ -48,7 +48,7 @@
       "id": "advisory",
       "keywords": ["advisory", "assessment", "retainer", "price", "cost", "2500", "5000", "paid", "offer", "kpi", "dashboard", "staffing", "diligence prep", "benchmark"],
       "text": "The Seller Scorecard stands on its own. Frye Practice Advisory offers a Practice Value Check, a Readiness Assessment, a Technology and Data Audit with a dental IT partner, an Owner KPI Dashboard, a Staffing and Pay Benchmark, Pre-Sale Diligence Prep, a Value-Building Retainer, and an AI and online presence cleanup. For this pilot those are by conversation, not a posted price. Book a free 20-minute call. Frye Practice Advisory is a separate affiliate from Frye Practice Sales. Separate agreement and billing. No fee sharing. You are free to choose any broker.",
-      "links": ["advisor", "advisory", "scorecard"]
+      "links": ["book", "advisor", "advisory", "scorecard"]
     },
     {
       "id": "ai",
@@ -66,7 +66,7 @@
       "id": "value-check",
       "keywords": ["practice value check", "value check", "1500", "3500", "entry offer"],
       "text": "The Practice Value Check is the next conversation after the Seller Scorecard, before full Sell-Ready Advisory. For this pilot it is by conversation, not a posted price. Book a free 20-minute call. It covers a short review of financials, staff cost versus local pay, the tech stack, and the top five value fixes. A software-subscription list can be part of that deeper review. Frye Practice Advisory is separate from Frye Practice Sales. Separate agreement and billing. No fee sharing. You are free to choose any broker. The work aims to improve the file a buyer will read. It does not promise a higher price.",
-      "links": ["advisor", "advisory", "scorecard"]
+      "links": ["book", "advisor", "advisory", "scorecard"]
     },
     {
       "id": "fees",
@@ -103,7 +103,8 @@
     "scorecard": { "label": "Seller Scorecard", "path": "scorecard/" },
     "listings": { "label": "Current listings", "path": "listings/" },
     "contact": { "label": "Talk to Karl", "path": "contact/#contact-form" },
-    "advisor": { "label": "Talk to an advisor", "path": "contact/?topic=Advisory#contact-form" },
+    "book": { "label": "Book a free 20-minute call", "path": "https://calendar.app.google/nm1B6wUECfpZQ2C9A" },
+    "advisor": { "label": "Prefer we reach out? Send a message", "path": "contact/?topic=Advisory#contact-form" },
     "advisory": { "label": "Sell-Ready Advisory", "path": "sell-ready-advisory/" },
     "valuation": { "label": "Valuation guide", "path": "dental-practice-valuation-arizona/" },
     "sellers": { "label": "Selling a practice", "path": "sellers/" },
