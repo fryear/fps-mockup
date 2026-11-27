@@ -135,6 +135,14 @@
     document.querySelectorAll('form[data-fps-sheet]').forEach(function (form) {
       form.addEventListener('submit', onSubmit);
     });
+    var scorecardForm = document.querySelector('form[data-fps-sheet="scorecard"]');
+    var results = document.getElementById('results');
+    if (!scorecardForm || !results) return;
+    results.addEventListener('click', function (event) {
+      var link = event.target && event.target.closest ? event.target.closest('a[href*="calendar.app.google/"]') : null;
+      if (!link || !results.contains(link)) return;
+      send(scorecardPayload(scorecardForm));
+    });
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
