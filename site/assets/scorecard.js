@@ -499,6 +499,7 @@ if (scorecard) {
   if (resetButton) {
     resetButton.addEventListener('click', () => {
       scorecard.reset();
+      if (window.fpsNewScorecardId) window.fpsNewScorecardId();
       if (collections) collections.value = '';
       if (goalLive && goal) goalLive.value = goal.value;
       render();
