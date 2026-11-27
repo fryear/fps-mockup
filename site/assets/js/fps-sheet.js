@@ -24,6 +24,12 @@
     return el ? String(el.value || '').trim() : '';
   }
 
+  function optionText(id) {
+    var el = document.getElementById(id);
+    if (!el || !el.value || el.selectedIndex < 0) return '';
+    return String(el.options[el.selectedIndex].text || '').trim();
+  }
+
   function choiceLabel(name) {
     var input = document.querySelector('input[name="' + name + '"]:checked');
     if (!input) return '';
@@ -96,6 +102,14 @@
     add(payload, 'own_or_lease', choiceLabel('occupancy'));
     add(payload, 'cloud_or_server', choiceLabel('q14'));
     add(payload, 'computer_age', choiceLabel('q15'));
+    ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10', 'q11', 'q12', 'q13', 'q14', 'q15', 'q17', 'q18', 'q19']
+      .forEach(function (q) { add(payload, q.toUpperCase(), choiceLabel(q)); });
+    add(payload, 'practice_state', textOf('practice-state'));
+    add(payload, 'zip', textOf('zip'));
+    add(payload, 'goal', optionText('goal'));
+    add(payload, 'practice_type', optionText('practice-type'));
+    add(payload, 'practice_software', optionText('practice-software'));
+    add(payload, 'collections', textOf('collections').replace(/[^0-9.]/g, ''));
     return payload;
   }
 
