@@ -37,6 +37,21 @@
     return label ? label.textContent.trim() : input.value;
   }
 
+  // One id per Scorecard visit, so "Book a call" and "Email me my Seller Scorecard" update the SAME row.
+  var ID_KEY = 'fpsScorecardId';
+  function submissionId() {
+    var id = '';
+    try { id = sessionStorage.getItem(ID_KEY) || ''; } catch (e) {}
+    if (!/^sc-[0-9a-f]{16}$/.test(id)) {
+      var b = new Uint8Array(8);
+      (window.crypto || window.msCrypto).getRandomValues(b);
+      id = 'sc-' + Array.prototype.map.call(b, function (x) { return ('0' + x.toString(16)).slice(-2); }).join('');
+      try { sessionStorage.setItem(ID_KEY, id); } catch (e) {}
+    }
+    return id;
+  }
+  window.fpsNewScorecardId = function () { try { sessionStorage.removeItem(ID_KEY); } catch (e) {} };
+
   function send(payload) {
     var endpoint = window.FPS_SHEET_ENDPOINT;
     if (!endpoint) {
@@ -46,6 +61,7 @@
     return fetch(endpoint, {
       method: 'POST',
       mode: 'no-cors',
+      keepalive: true,
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify(payload)
     }).catch(function (error) {
@@ -70,7 +86,7 @@
   }
 
   function scorecardPayload(form) {
-    var payload = { type: 'scorecard' };
+    var payload = { type: 'scorecard', submission_id: submissionId() };
     INQUIRY_FIELDS.forEach(function (pair) {
       if (pair[0] === 'topic' || pair[0] === 'message') return;
       add(payload, pair[1], fieldValue(form, pair[0]));
@@ -128,21 +144,35 @@
       if (!textOf('gate-first') || !textOf('gate-last') || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !phoneOk) return;
     }
     var payload = kind === 'scorecard' ? scorecardPayload(form) : inquiryPayload(form);
+    if (kind === 'scorecard') payload.action = 'report';
     send(payload).then(function () { thank(form); });
+  }
+
+  function gateOk() {
+    var email = textOf('gate-email');
+    var digits = textOf('gate-phone').replace(/\D/g, '');
+    var phoneOk = digits.length === 10 || (digits.length === 11 && digits.charAt(0) === '1');
+    return !!(textOf('gate-first') && textOf('gate-last') && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && phoneOk);
+  }
+
+  // "Book a free 20-minute call" on the Scorecard saves the Scorecard first (the link still opens normally).
+  function onBookClick() {
+    var form = document.getElementById('results-email');
+    if (!form || !gateOk()) return;
+    var payload = scorecardPayload(form);
+    payload.action = 'book';
+    send(payload);
   }
 
   function boot() {
     document.querySelectorAll('form[data-fps-sheet]').forEach(function (form) {
       form.addEventListener('submit', onSubmit);
     });
-    var scorecardForm = document.querySelector('form[data-fps-sheet="scorecard"]');
-    var results = document.getElementById('results');
-    if (!scorecardForm || !results) return;
-    results.addEventListener('click', function (event) {
-      var link = event.target && event.target.closest ? event.target.closest('a[href*="calendar.app.google/"]') : null;
-      if (!link || !results.contains(link)) return;
-      send(scorecardPayload(scorecardForm));
-    });
+    if (document.getElementById('results-email')) {
+      document.querySelectorAll('#results a[href^="https://calendar.app.google/"]').forEach(function (a) {
+        a.addEventListener('click', onBookClick);
+      });
+    }
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
