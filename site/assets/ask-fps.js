@@ -79,9 +79,15 @@
     var note = el('p', 'ask-fps-note', knowledge.agentNote);
     var advisor = document.createElement('a');
     advisor.className = 'ask-fps-advisor';
-    advisor.href = siteHref('contact/?topic=Advisory#contact-form');
-    advisor.textContent = 'Talk to an advisor';
-    panel.append(head, log, form, advisor, note);
+    advisor.href = 'https://calendar.app.google/nm1B6wUECfpZQ2C9A';
+    advisor.target = '_blank';
+    advisor.rel = 'noopener';
+    advisor.textContent = 'Book a free 20-minute call';
+    var advisorAlt = document.createElement('a');
+    advisorAlt.className = 'ask-fps-alt';
+    advisorAlt.href = siteHref('contact/?topic=Advisory#contact-form');
+    advisorAlt.textContent = 'Prefer we reach out? Send a message';
+    panel.append(head, log, form, advisor, advisorAlt, note);
     root.append(launcher, panel);
     document.body.append(root);
 
@@ -93,7 +99,11 @@
           var item = knowledge.links && knowledge.links[key];
           if (!item) return;
           var a = document.createElement('a');
-          a.href = siteHref(item.path);
+          a.href = /^https?:/i.test(item.path) ? item.path : siteHref(item.path);
+          if (/^https?:/i.test(a.href) && a.href.indexOf(location.host) === -1) {
+            a.target = '_blank';
+            a.rel = 'noopener';
+          }
           a.textContent = item.label;
           row.append(a);
         });
@@ -166,7 +176,8 @@
           scorecard: { label: 'Seller Scorecard', path: 'scorecard/' },
           listings: { label: 'Current listings', path: 'listings/' },
           contact: { label: 'Talk to Karl', path: 'contact/#contact-form' },
-          advisor: { label: 'Talk to an advisor', path: 'contact/?topic=Advisory#contact-form' }
+          book: { label: 'Book a free 20-minute call', path: 'https://calendar.app.google/nm1B6wUECfpZQ2C9A' },
+          advisor: { label: 'Prefer we reach out? Send a message', path: 'contact/?topic=Advisory#contact-form' }
         }
       });
     });

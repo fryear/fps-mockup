@@ -17,6 +17,9 @@
 .fps-mock-band h2 { color:#141B38; font-size:clamp(1.8rem, 3vw, 2.6rem); margin:0 0 10px; }
 .fps-mock-band p { color:#3D3D3D; max-width:680px; }
 .fps-band-actions { display:flex; flex-wrap:wrap; gap:10px; }
+.fps-book-note, .fps-book-alt { font-size: 14px; line-height: 1.4; margin: 8px 0 0; }
+.fps-book-alt { display: inline-block; font-weight: 600; }
+.ask-fps-alt { display: block; margin: 0 12px 10px; font-size: 13px; text-align: center; color: #3A8EC5; }
 .fps-btn { display:inline-flex; align-items:center; justify-content:center; background:#3A8EC5; color:#fff !important; text-decoration:none; border-radius:6px; padding:12px 16px; font-weight:700; }
 .fps-btn-ghost { background:transparent; color:#141B38 !important; border:1px solid #141B38; }
 .fps-page { max-width:1040px; margin:0 auto; padding:42px 20px 64px; color:#3D3D3D; }
